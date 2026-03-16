@@ -1,0 +1,17 @@
+{{- $out := "" -}}
+{{- range .Params.content_blocks -}}
+  {{- $name := ._bookshop_name -}}
+  {{- $i18nKey := printf "llm-block-%s" $name -}}
+  {{- $title := or (i18n $i18nKey) ($name | title) -}}
+  {{- with .heading }}{{- with .title }}{{- $title = . -}}{{- end }}{{- end -}}
+  {{- with .heading }}{{- with .preheading }}{{- $title = printf "%s — %s" . $title -}}{{- end }}{{- end -}}
+  {{- $block := printf "\n## %s\n\n" $title -}}
+  {{- with .heading }}{{- with .content }}{{- $block = printf "%s%s\n\n" $block . -}}{{- end }}{{- end -}}
+  {{- $partial := printf "bookshop/components/%s/%s.hugo.md" $name $name -}}
+  {{- if templates.Exists (printf "partials/%s" $partial) -}}
+    {{- $block = printf "%s%s\n\n" $block (printf "%s" (partial $partial .)) -}}
+  {{- end -}}
+  {{- $out = printf "%s%s" $out $block -}}
+{{- end -}}
+{{- $out = $out | replaceRE `\n{3,}` "\n\n" | strings.TrimLeft "\n" -}}
+{{ $out | safeHTML }}

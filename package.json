@@ -1,7 +1,7 @@
 {
-  "name": "@gethinode/mod-template",
+  "name": "@gethinode/mod-llm",
   "version": "0.0.0-semantically-released",
-  "description": "A template to define a Hugo module compatible with Hinode",
+  "description": "A Hugo module to expose your Hinode site in machine-readable form for AI agents",
   "keywords": [
     "hugo",
     "module"
@@ -22,13 +22,14 @@
     "mod:tidy": "hugo mod tidy",
     "mod:vendor": "rimraf _vendor && hugo mod vendor",
     "postinstall": "echo TODO: add postinstall instructions",
+    "env": "hugo env",
     "test": "npm run -s build",
     "upgrade": "npx npm-check-updates -u && npm run -s mod:update",
     "prepare": "node .husky/install.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gethinode/mod-template.git"
+    "url": "git+https://github.com/gethinode/mod-llm.git"
   },
   "author": "Mark Dumay",
   "license": "MIT",

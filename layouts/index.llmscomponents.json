@@ -1,0 +1,63 @@
+{{- $globalArgs := ((index site.Data.structures "_arguments") | default dict).arguments | default dict -}}
+{{- $components := slice -}}
+{{- range $name, $def := site.Data.structures -}}
+  {{- if hasPrefix $name "_" }}{{ continue }}{{ end -}}
+  {{- $arguments := slice -}}
+  {{- $deprecated := slice -}}
+  {{- range $argName, $argVal := $def.arguments -}}
+    {{- $g := index $globalArgs $argName | default dict -}}
+    {{- $argMap := dict -}}
+    {{- if reflect.IsMap $argVal }}{{- $argMap = $argVal -}}{{ end -}}
+    {{- $merged := merge $g $argMap -}}
+    {{- /* Skip group: partial args */ -}}
+    {{- if eq $merged.group "partial" }}{{ continue }}{{ end -}}
+    {{- /* Build argument entry */ -}}
+    {{- $entry := dict
+      "name"        $argName
+      "type"        ($merged.type | default "string")
+      "required"    (not (default false $merged.optional))
+      "description" ($merged.comment | default "")
+    -}}
+    {{- with $merged.default -}}
+      {{- $entry = merge $entry (dict "default" (printf "%v" .)) -}}
+    {{- else -}}
+      {{- $entry = merge $entry (dict "default" nil) -}}
+    {{- end -}}
+    {{- with $merged.options.values -}}
+      {{- $entry = merge $entry (dict "options" .) -}}
+    {{- else -}}
+      {{- $entry = merge $entry (dict "options" slice) -}}
+    {{- end -}}
+    {{- with $merged.position -}}
+      {{- $entry = merge $entry (dict "position" (int .)) -}}
+    {{- else -}}
+      {{- $entry = merge $entry (dict "position" nil) -}}
+    {{- end -}}
+    {{- with $merged.release -}}
+      {{- $entry = merge $entry (dict "since" (printf "%v" .)) -}}
+    {{- else -}}
+      {{- $entry = merge $entry (dict "since" nil) -}}
+    {{- end -}}
+    {{- if $merged.deprecated -}}
+      {{- $entry = merge $entry (dict
+        "deprecated"  (printf "%v" $merged.deprecated)
+        "alternative" ($merged.alternative | default "")
+      ) -}}
+      {{- $deprecated = $deprecated | append $entry -}}
+    {{- else -}}
+      {{- $arguments = $arguments | append $entry -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $component := dict
+    "name"                $name
+    "description"         ($def.comment | default "")
+    "icon"                ($def.icon | default "")
+    "arguments"           $arguments
+    "deprecated_arguments" $deprecated
+  -}}
+  {{- with $def.body -}}
+    {{- $component = merge $component (dict "body" .) -}}
+  {{- end -}}
+  {{- $components = $components | append $component -}}
+{{- end -}}
+{{ $components | jsonify (dict "indent" "  ") }}

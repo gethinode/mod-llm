@@ -1,0 +1,47 @@
+# Component reference section in llms.txt
+- id: llm-components-title
+  translation: Component Reference
+- id: llm-components-desc
+  translation: >-
+    Machine-readable JSON schema for all shortcodes and content blocks, including
+    argument definitions, types, defaults, and descriptions.
+
+# Content block rendering
+- id: llm-links
+  translation: Links
+
+# Content block name fallbacks
+- id: llm-block-about
+  translation: Over
+- id: llm-block-approach
+  translation: Aanpak
+- id: llm-block-articles
+  translation: Artikelen
+- id: llm-block-cards
+  translation: Kaarten
+- id: llm-block-cta
+  translation: Oproep tot actie
+- id: llm-block-faq
+  translation: FAQ
+- id: llm-block-featured
+  translation: Uitgelicht
+- id: llm-block-hero
+  translation: Hero
+- id: llm-block-list
+  translation: Lijst
+- id: llm-block-menu
+  translation: Menu
+- id: llm-block-panels
+  translation: Panelen
+- id: llm-block-preview
+  translation: Voorbeeld
+- id: llm-block-releases
+  translation: Releases
+- id: llm-block-separator
+  translation: Scheidingslijn
+- id: llm-block-team
+  translation: Team
+- id: llm-block-testimonials
+  translation: Getuigenissen
+- id: llm-block-video-message
+  translation: Videoboodschap

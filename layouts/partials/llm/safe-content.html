@@ -1,0 +1,113 @@
+{{- $page := . -}}
+{{- $content := .RawContent -}}
+{{- $sc := newScratch -}}
+{{- $sc.Set "ordinal" 0 -}}
+
+{{- /* Step 1: Pre-process escaped shortcodes (e.g. {{<-escaped-sc-/>}}).
+  Replace with placeholders so Steps 2-4 do not match {{ inside escaped blocks.
+  The literal form is stored and restored in Step 5.
+*/ -}}
+{{- $escapedPattern := `(?s)\{\{[<%]/\*.*?\*/?[>%]\}\}` -}}
+{{- range findRE $escapedPattern $content -}}
+  {{- $escaped := . -}}
+  {{- $literal := $escaped | replaceRE `^(\{\{[<%])/\*` "$1" | replaceRE `\*/([/>%]?\}\})$` "$1" -}}
+  {{- $n := $sc.Get "ordinal" -}}
+  {{- $placeholder := printf "LSCESC%d_" $n -}}
+  {{- $sc.SetInMap "placeholders" $placeholder $literal -}}
+  {{- $sc.Set "ordinal" (add $n 1) -}}
+  {{- $content = replace $content $escaped $placeholder -}}
+{{- end -}}
+
+{{- /*
+  Step 2 – Pass A: Explicitly self-closing shortcodes.
+  Pattern: ends with />}} or /%}}
+*/ -}}
+{{- $selfClosingPattern := `\{\{[<%]\s*[\w-]+[^>]*/\s*[>%]\}\}` -}}
+{{- range findRE $selfClosingPattern $content -}}
+  {{- $match := . -}}
+  {{- $rendered := $page.RenderString $match | string -}}
+  {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+  {{- $content = replace $content $match $rendered -}}
+{{- end -}}
+
+{{- /*
+  Step 3 – Pass B: Innermost paired shortcodes (up to 5 passes).
+  Innermost = paired block whose body contains no {{.
+  Body pattern (?:[^{]|\{[^{])* matches text without {{.
+  Repeat to handle real nesting (e.g. accordion > accordion-item).
+*/ -}}
+{{- $innermostPattern := `(?s)\{\{[<%]\s*[\w-]+[^>]*[>%]\}\}((?:[^{]|\{[^{])*)\{\{[<%]\s*/[\w-]+\s*[>%]\}\}` -}}
+{{- range seq 5 -}}
+  {{- range findRE $innermostPattern $content -}}
+    {{- $match := . -}}
+    {{- $rendered := $page.RenderString $match | string -}}
+    {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+    {{- $content = replace $content $match $rendered -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /*
+  Step 4 – Pass C: Remaining opening / implicit self-closing shortcodes.
+  At this point all paired blocks have been processed.
+  Orphaned closing tags ({{< /... >}}) are removed without rendering.
+*/ -}}
+{{- $remainingPattern := `\{\{[<%]\s*[a-zA-Z][\w-]*[^>]*[>%]\}\}` -}}
+{{- range findRE $remainingPattern $content -}}
+  {{- $match := . -}}
+  {{- if findRE `^\{\{[<%]\s*/` $match -}}
+    {{- $content = replace $content $match "" -}}
+  {{- else -}}
+    {{- $rendered := $page.RenderString $match | string -}}
+    {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+    {{- $content = replace $content $match $rendered -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /*
+  Step 5: Restore escaped shortcode placeholders.
+  Placeholders become readable literal text (e.g. {{< abbr HTML >}})
+  which is correct inside code block content produced by {{< example >}}.
+*/ -}}
+{{- range $ph, $lit := ($sc.Get "placeholders") -}}
+  {{- $content = replace $content $ph $lit -}}
+{{- end -}}
+
+{{- /*
+  Step 6: Warn and strip any residual HTML.
+  Code fences and inline code spans are protected from detection and stripping
+  so that e.g. `<button>` in documentation text is not treated as HTML.
+  This should only fire for shortcodes that lack a .md template.
+*/ -}}
+{{- $sc.Set "codeN" 0 -}}
+{{- $strippable := $content -}}
+{{- range findRE "(?s)```[^`]*```" $strippable -}}
+  {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
+  {{- $sc.SetInMap "codeblocks" $ph . -}}
+  {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
+  {{- $strippable = replace $strippable . $ph -}}
+{{- end -}}
+{{- range findRE "`[^`\n]+`" $strippable -}}
+  {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
+  {{- $sc.SetInMap "codeblocks" $ph . -}}
+  {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
+  {{- $strippable = replace $strippable . $ph -}}
+{{- end -}}
+{{- if findRE `(?i)<[a-z][a-z0-9]*[\s>/]` $strippable -}}
+  {{- warnf "llm/safe-content: '%s' has HTML in markdown output — a shortcode may be missing a .md template" $page.RelPermalink -}}
+  {{- $strippable = $strippable | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" | replaceRE `(?i)</?[a-zA-Z][^>]*>` "" -}}
+{{- end -}}
+{{- range $ph, $block := ($sc.Get "codeblocks") -}}
+  {{- $strippable = replace $strippable $ph $block -}}
+{{- end -}}
+{{- $content = $strippable -}}
+
+{{- /* Strip HTML comments (e.g. markdownlint-disable directives) */ -}}
+{{- $content = $content | replaceRE `(?s)<!--.*?-->` "" -}}
+
+{{- /* Collapse runs of 3+ newlines to a single blank line */ -}}
+{{- $content = $content | replaceRE `\n{3,}` "\n\n" -}}
+
+{{- /* Trim leading newlines so the caller controls top-of-content spacing */ -}}
+{{- $content = strings.TrimLeft "\n" $content -}}
+
+{{- return $content -}}
