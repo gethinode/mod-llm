@@ -1,8 +1,8 @@
-# Hinode Module - Template
+# Hinode Module - LLM
 
 <!-- Tagline -->
 <p align="center">
-    <b>A template to define a Hugo module compatible with Hinode</b>
+    <b>A Hugo module to expose your Hinode site in machine-readable form for AI agents</b>
     <br />
 </p>
 
@@ -14,17 +14,17 @@
     <a href="https://gethinode.com" alt="Hinode theme">
         <img src="https://img.shields.io/badge/theme-hinode-blue">
     </a>
-    <a href="https://github.com/gethinode/mod-template/commits/main" alt="Last commit">
-        <img src="https://img.shields.io/github/last-commit/gethinode/mod-template.svg">
+    <a href="https://github.com/gethinode/mod-llm/commits/main" alt="Last commit">
+        <img src="https://img.shields.io/github/last-commit/gethinode/mod-llm.svg">
     </a>
-    <a href="https://github.com/gethinode/mod-template/issues" alt="Issues">
-        <img src="https://img.shields.io/github/issues/gethinode/mod-template.svg">
+    <a href="https://github.com/gethinode/mod-llm/issues" alt="Issues">
+        <img src="https://img.shields.io/github/issues/gethinode/mod-llm.svg">
     </a>
-    <a href="https://github.com/gethinode/mod-template/pulls" alt="Pulls">
-        <img src="https://img.shields.io/github/issues-pr-raw/gethinode/mod-template.svg">
+    <a href="https://github.com/gethinode/mod-llm/pulls" alt="Pulls">
+        <img src="https://img.shields.io/github/issues-pr-raw/gethinode/mod-llm.svg">
     </a>
-    <a href="https://github.com/gethinode/mod-template/blob/main/LICENSE" alt="License">
-        <img src="https://img.shields.io/github/license/gethinode/mod-template">
+    <a href="https://github.com/gethinode/mod-llm/blob/main/LICENSE" alt="License">
+        <img src="https://img.shields.io/github/license/gethinode/mod-llm">
     </a>
 </p>
 

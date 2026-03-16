@@ -1,0 +1,47 @@
+# Component reference section in llms.txt
+- id: llm-components-title
+  translation: Component Reference
+- id: llm-components-desc
+  translation: >-
+    Machine-readable JSON schema for all shortcodes and content blocks, including
+    argument definitions, types, defaults, and descriptions.
+
+# Content block rendering
+- id: llm-links
+  translation: 連結
+
+# Content block name fallbacks
+- id: llm-block-about
+  translation: 關於
+- id: llm-block-approach
+  translation: 方法
+- id: llm-block-articles
+  translation: 文章
+- id: llm-block-cards
+  translation: 卡片
+- id: llm-block-cta
+  translation: 行動號召
+- id: llm-block-faq
+  translation: 常見問題
+- id: llm-block-featured
+  translation: 精選
+- id: llm-block-hero
+  translation: 主橫幅
+- id: llm-block-list
+  translation: 列表
+- id: llm-block-menu
+  translation: 選單
+- id: llm-block-panels
+  translation: 面板
+- id: llm-block-preview
+  translation: 預覽
+- id: llm-block-releases
+  translation: 版本
+- id: llm-block-separator
+  translation: 分隔線
+- id: llm-block-team
+  translation: 團隊
+- id: llm-block-testimonials
+  translation: 客戶評價
+- id: llm-block-video-message
+  translation: 視訊訊息

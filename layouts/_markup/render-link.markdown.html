@@ -1,0 +1,11 @@
+{{- /* Markdown output format: render links as plain markdown, not HTML. */ -}}
+{{- $text := .PlainText -}}
+{{- $dest := .Destination -}}
+{{- $title := .Title -}}
+{{- if eq $text $dest -}}
+{{- $dest -}}
+{{- else if $title -}}
+[{{ $text }}]({{ $dest }} "{{ $title }}")
+{{- else -}}
+[{{ $text }}]({{ $dest }})
+{{- end -}}
