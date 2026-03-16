@@ -2,5 +2,3 @@ go 1.19
 
 use .
 use ../
-use ../../hinode
-use ../../mod-blocks

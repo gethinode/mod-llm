@@ -6,8 +6,12 @@ github.com/cloudcannon/bookshop/hugo/v3 v3.17.1 h1:weTVWBamjQHMIp/oYTFsPwRzzhWrZ
 github.com/cloudcannon/bookshop/hugo/v3 v3.17.1/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81 h1:HA7C2veNPHg5VXe+Zsub+gDezcsdOJkoT5k/8k44CmI=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81/go.mod h1:Lj9fhJwkg5CeDUf5VpgTF3kMPzwYspo/u5N9uS5FEsY=
+github.com/gethinode/hinode/v2 v2.0.0-beta.82 h1:H10vIDZOvMtf6XGGWZpd40GCW6qzi+L4bgYtxNtcJNg=
+github.com/gethinode/hinode/v2 v2.0.0-beta.82/go.mod h1:7WDJW9ydmwx+vb3bywALuTLQY+qDqL+14PsH+B2cNik=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
+github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
+github.com/gethinode/mod-blocks v1.14.0/go.mod h1:xcYuTxTh0DJz2zQqERgG5Tjzj7Sr+luQjvqfc04K3tI=
 github.com/gethinode/mod-bootstrap v1.3.5 h1:bewgYpQex+dBABK0u5PUvW6IoUXLHhi1Yv9hcPzwGVc=
 github.com/gethinode/mod-bootstrap v1.3.5/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap-icons v1.4.1 h1:XgP3VU8YiH3FLbF35yltddZKoD6gMC53PYEq3GJ9U4M=
@@ -28,6 +32,8 @@ github.com/gethinode/mod-katex v1.1.4 h1:HWc45uHKX2JhI624UnA46LCZkLGhSbaq+zAHt9e
 github.com/gethinode/mod-katex v1.1.4/go.mod h1:byAfpI3wuqNJIooTGVEGc1cjBhhCy4+CcK1H6495MYg=
 github.com/gethinode/mod-leaflet/v2 v2.0.0 h1:94sQHzzrgB15LuePziHahss/SgJ21a2kDsOx4eE4e7A=
 github.com/gethinode/mod-leaflet/v2 v2.0.0/go.mod h1:Z9VrlYTqFRHTI0E/lTG/H7X2nT/JuhoLFaS+jbov7/s=
+github.com/gethinode/mod-llm v0.0.0-20260316133619-e8a639bd16e3 h1:JzAKLsr3uMGYGXvVw97HJBzt61exFgduUQyM2qDmybc=
+github.com/gethinode/mod-llm v0.0.0-20260316133619-e8a639bd16e3/go.mod h1:8Fr0gHMaGOwyOA11cozmFZN4KsQ+3UKR9dTlVS3nd9I=
 github.com/gethinode/mod-lottie/v2 v2.0.1 h1:jIY5oGHtkXXvJoxNAE2AueoqxqNNlTYHF4+igQmkIAU=
 github.com/gethinode/mod-lottie/v2 v2.0.1/go.mod h1:/YzhRcG9H8MyODt8qaOQP0nqoux7EFHW2S7ugiiFf0o=
 github.com/gethinode/mod-mermaid/v3 v3.0.1 h1:h4v3QvGpSln9PDbWccSktULq9FbRZ57JN4Lp+gVjvVI=
