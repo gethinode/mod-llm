@@ -8,6 +8,11 @@
 {{- /* Collect pages grouped by section, default language only, skip excluded */ -}}
 {{- $sections := dict -}}
 {{- $sectionOrder := slice -}}
+{{- /* Prepend homepage to the pages section */ -}}
+{{- if not $site.Home.Params.llm.exclude -}}
+  {{- $sectionOrder = $sectionOrder | append "pages" -}}
+  {{- $sections = merge $sections (dict "pages" (slice $site.Home)) -}}
+{{- end -}}
 {{- range $site.RegularPages -}}
   {{- if and (eq .Language.Lang $site.Language.Lang) (not .Params.llm.exclude) -}}
     {{- $section := .Section | default "pages" -}}
