@@ -32,23 +32,63 @@
 
 ![Logo](https://raw.githubusercontent.com/gethinode/hinode/main/static/img/logo.png)
 
-Hinode is a clean blog theme for [Hugo][hugo], an open-source static site generator. Hinode is available as a [template][repository_template], and a [main theme][repository]. <!-- This repository maintains a Hugo module to add [module][module] to a Hinode site. --> Visit the Hinode documentation site for [installation instructions][hinode_docs].
+Hinode is a clean blog theme for [Hugo][hugo], an open-source static site generator. Hinode is available as a [template][repository_template], and a [main theme][repository]. This repository implements the emerging [llms.txt convention](https://llmstxt.org/) to expose your Hinode in machine-readable form for AI agents. In addition, it creates a clean Markdown equivalent for each page. Finally, `mod-llm` optionally generates `/llms-components.json`, a machine-readable JSON schema of every Hinode shortcode and content block. Visit the Hinode documentation site for [installation instructions][hinode_docs].
+
+## Configuration
+
+`mod-llm` is a standard Hugo module. Add it as an import to your site's module configuration in `hugo.toml`.
+
+```toml
+[[module.imports]]
+  path = "github.com/gethinode/mod-llm"
+```
+
+Hugo generates output for each page based on the configured output formats. `mod-llm` requires two custom formats and supports one optional format. Add the following definitions to your site configuration.
+
+```toml
+[outputFormats]
+  [outputFormats.llmstxt]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+    notAlternative = true
+    rel = "alternate"
+
+  [outputFormats.markdown]
+    mediaType = "text/markdown"
+    baseName = "index"
+    isPlainText = true
+    isHTML = false
+    noUgly = false
+    rel = "alternate"
+
+  # Optional: add llmscomponents for Hinode documentation sites
+  [outputFormats.llmscomponents]
+    mediaType = "application/json"
+    baseName = "llms-components"
+    isPlainText = true
+    notAlternative = true
+    root = true
+```
+
+Activate the formats in the `[outputs]` section of your `hugo.toml`. Include `llmscomponents` only if your site is a Hinode documentation site.
+
+```toml
+[outputs]
+  home = ["HTML", "llmstxt"]   # add "llmscomponents" for documentation sites
+  page = ["HTML", "markdown"]
+```
+
+> [!NOTE]
+> If your site already defines `[outputs]`, extend the existing lists rather than replacing them. The `HTML` output must remain to keep the regular site building correctly.
 
 ## Contributing
 
 This module uses [semantic-release][semantic-release] to automate the release of new versions. The package uses `husky` and `commitlint` to ensure commit messages adhere to the [Conventional Commits][conventionalcommits] specification.
 
-<!-- ## Configuration
-
-This module supports the following parameters (see the section `params.modules` in `config.toml`):
-
-| Setting                   | Default | Description |
-|---------------------------|---------|-------------| -->
-
 <!-- MARKDOWN LINKS -->
 [hugo]: https://gohugo.io
 [hinode_docs]: https://gethinode.com
-<!-- [module]: https://example.com -->
 [repository]: https://github.com/gethinode/hinode.git
 [repository_template]: https://github.com/gethinode/template.git
 [conventionalcommits]: https://www.conventionalcommits.org

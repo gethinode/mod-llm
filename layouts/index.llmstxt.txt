@@ -1,7 +1,7 @@
 {{- $site := site -}}
 # {{ $site.Title }}
 
-> {{ with $site.Params.description }}{{ . }}{{ else }}{{ $site.Title }}{{ end }}
+> {{ with $site.Params.main.description }}{{ . }}{{ else }}{{ $site.Title }}{{ end }}
 
 {{- /* Collect pages grouped by section, default language only, skip excluded */ -}}
 {{- $sections := dict -}}
@@ -17,18 +17,18 @@
   {{- end -}}
 {{- end -}}
 
-{{- range $section := $sectionOrder -}}
-  {{- $pages := index $sections $section }}
+{{- range $section := $sectionOrder }}
 
 ## {{ $section | title }}
-  {{- range $pages }}
-    {{- $desc := or .Params.llm.description .Description (.Summary | plainify | truncate 120) -}}
-    {{- $hasMarkdown := .OutputFormats.Get "markdown" -}}
-    {{- $link := .Permalink -}}
-    {{- if $hasMarkdown }}{{- $link = printf "%sindex.md" .Permalink -}}{{ end }}
-- [{{ .Title }}]({{ $link }}): {{ $desc }}
-  {{- end }}
-{{ end }}
+
+{{ range $pages := index $sections $section -}}
+{{- $desc := or .Params.llm.description .Description (.Summary | plainify | truncate 120) -}}
+{{- $hasMarkdown := .OutputFormats.Get "markdown" -}}
+{{- $link := .Permalink -}}
+{{- if $hasMarkdown }}{{- $link = printf "%sindex.md" .Permalink -}}{{ end -}}
+{{- printf "- [%s](%s): %s\n" .Title $link $desc -}}
+{{- end -}}
+{{- end -}}
 {{- with site.Home.OutputFormats.Get "llmscomponents" }}
 ## {{ i18n "llm-components-title" }}
 
