@@ -32,34 +32,54 @@
 
 {{- /*
   Step 3 – Pass B: Innermost paired shortcodes (up to 5 passes).
-  Innermost = paired block whose body contains no {{.
-  Body pattern (?:[^{]|\{[^{])* matches text without {{.
+  Innermost = paired block whose body contains no {{< or {{%.
+  Enhanced body pattern (?:[^{]|\{[^{]|\{\{[^<%])* allows {{ not followed by < or %
+  (e.g. {{section}} in table cells, or {{ if ... }} inside code fences) while still
+  stopping at actual shortcode delimiters {{< and {{%.
+  Tag names are verified to match before rendering to prevent mismatched pairs
+  (e.g. {{< img >}}...{{< /carousel >}}) from reaching RenderString.
   Repeat to handle real nesting (e.g. accordion > accordion-item).
 */ -}}
-{{- $innermostPattern := `(?s)\{\{[<%]\s*[\w-]+[^>]*[>%]\}\}((?:[^{]|\{[^{])*)\{\{[<%]\s*/[\w-]+\s*[>%]\}\}` -}}
+{{- $innermostPattern := `(?s)\{\{[<%]\s*[\w-]+[^>]*[>%]\}\}((?:[^{]|\{[^{]|\{\{[^<%])*)\{\{[<%]\s*/\s*[\w-]+\s*[>%]\}\}` -}}
 {{- range seq 5 -}}
   {{- range findRE $innermostPattern $content -}}
     {{- $match := . -}}
-    {{- $rendered := $page.RenderString $match | string -}}
-    {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
-    {{- $content = replace $content $match $rendered -}}
+    {{- $openName := replaceRE `(?s)^\{\{[<%]\s*([\w-]+).*$` "$1" $match -}}
+    {{- $closeName := replaceRE `(?s)^.*\{\{[<%]\s*/\s*([\w-]+)\s*[>%]\}\}$` "$1" $match -}}
+    {{- if eq $openName $closeName -}}
+      {{- $rendered := $page.RenderString $match | string -}}
+      {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+      {{- $content = replace $content $match $rendered -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
 {{- /*
   Step 4 – Pass C: Remaining opening / implicit self-closing shortcodes.
-  At this point all paired blocks have been processed.
-  Orphaned closing tags ({{< /... >}}) are removed without rendering.
+  Safeguard: opening tags that still have a matching closing tag remaining in the
+  content are wrapper shortcodes whose body was too complex for Steps 2–3 (e.g.
+  containing nested shortcodes). Strip only the opening tag and let the closing tag
+  and any inner content be handled by subsequent iterations. Only call RenderString
+  for shortcodes with no matching closing tag — these are truly implicit self-closing.
+  Orphaned closing tags ({{< /... >}}) are always stripped.
 */ -}}
 {{- $remainingPattern := `\{\{[<%]\s*[a-zA-Z][\w-]*[^>]*[>%]\}\}` -}}
 {{- range findRE $remainingPattern $content -}}
   {{- $match := . -}}
-  {{- if findRE `^\{\{[<%]\s*/` $match -}}
+  {{- if findRE `^\{\{[<%]\s*/\s*[\w-]` $match -}}
     {{- $content = replace $content $match "" -}}
   {{- else -}}
-    {{- $rendered := $page.RenderString $match | string -}}
-    {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
-    {{- $content = replace $content $match $rendered -}}
+    {{- $name := replaceRE `(?s)^\{\{[<%]\s*([\w-]+).*$` "$1" $match -}}
+    {{- $closingPattern := printf `\{\{[<%%]\s*/\s*%s\s*[>%%]\}\}` $name -}}
+    {{- if findRE $closingPattern $content -}}
+      {{- /* Paired shortcode not yet resolved — strip wrapper, keep inner content */ -}}
+      {{- $content = replace $content $match "" -}}
+    {{- else -}}
+      {{- /* No matching closing tag — treat as implicit self-closing */ -}}
+      {{- $rendered := $page.RenderString $match | string -}}
+      {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+      {{- $content = replace $content $match $rendered -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
