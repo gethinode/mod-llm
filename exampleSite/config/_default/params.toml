@@ -1,7 +1,7 @@
 # toml-docs-start main
 [main]
     separator = "-"
-    description = "Hinode is a clean documentation and blog theme for your Hugo site based on Bootstrap 5."
+    description = "Test site for the Hinode mod-llm module."
     enableLanguageSelectionStorage = false
     canonifyAssetsURLs = false
     endorse = true
