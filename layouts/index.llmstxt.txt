@@ -1,3 +1,5 @@
+{{- $defaultLang := (index (sort site.Languages "Weight") 0).Lang -}}
+{{- if eq .Language.Lang $defaultLang -}}
 {{- $site := site -}}
 # {{ $site.Title }}
 
@@ -26,7 +28,11 @@
 {{- $hasMarkdown := .OutputFormats.Get "markdown" -}}
 {{- $link := .Permalink -}}
 {{- if $hasMarkdown }}{{- $link = printf "%sindex.md" .Permalink -}}{{ end -}}
+{{- if $desc -}}
 {{- printf "- [%s](%s): %s\n" .Title $link $desc -}}
+{{- else -}}
+{{- printf "- [%s](%s)\n" .Title $link -}}
+{{- end -}}
 {{- end -}}
 {{- end -}}
 {{- with site.Home.OutputFormats.Get "llmscomponents" }}
@@ -34,3 +40,4 @@
 
 - [{{ i18n "llm-components-title" }}]({{ .Permalink }}): {{ i18n "llm-components-desc" }}
 {{ end -}}
+{{- end -}}
