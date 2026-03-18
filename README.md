@@ -53,6 +53,7 @@ Hugo generates output for each page based on the configured output formats. `mod
     isPlainText = true
     notAlternative = true
     rel = "alternate"
+    root = true
 
   [outputFormats.markdown]
     mediaType = "text/markdown"

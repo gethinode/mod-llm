@@ -9,6 +9,7 @@ title = 'Test site for mod-llm'
     isPlainText = true
     notAlternative = true
     rel = "alternate"
+    root = true
 
   [outputFormats.markdown]
     mediaType = "text/markdown"
