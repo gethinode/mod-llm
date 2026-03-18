@@ -1,20 +1,63 @@
 {{- $globalArgs := ((index site.Data.structures "_arguments") | default dict).arguments | default dict -}}
+{{- $types := (index site.Data.structures "_types" | default dict).types | default dict -}}
+
+{{- /* Build $typesDict: map of type name → { kind, fields } */ -}}
+{{- $typesDict := dict -}}
+{{- range $typeName, $typeDef := $types -}}
+  {{- $kind := "object" -}}
+  {{- if reflect.IsSlice $typeDef -}}{{- $kind = "array" -}}{{- end -}}
+  {{- $src := $typeDef -}}
+  {{- if reflect.IsSlice $typeDef -}}{{- $src = index $typeDef 0 | default dict -}}{{- end -}}
+  {{- $fields := slice -}}
+  {{- range $fieldName, $_ := $src -}}
+    {{- $g := index $globalArgs $fieldName | default dict -}}
+    {{- $fields = $fields | append (dict
+      "name"        $fieldName
+      "type"        ($g.type | default "string")
+      "description" ($g.comment | default "")
+    ) -}}
+  {{- end -}}
+  {{- $typesDict = merge $typesDict (dict $typeName (dict "kind" $kind "fields" $fields)) -}}
+{{- end -}}
+
+{{- /* Primitive types — no inline fields */ -}}
+{{- $primitiveTypes := slice "string" "bool" "int" "int64" "float" "float64" "select"
+    "path" "url" "template.URL" "template.HTML" "hstring.RenderedString" "hstring.HTML"
+    "[]map[string]interface {}" "*navigation.MenuEntry" "page.Pages" "resource.Resources" -}}
+
+{{- /* Pre-build blueprint names to suppress mod-blocks internal helpers in flat loop */ -}}
+{{- $blueprintNames := dict -}}
+{{- range $modKey, $modVal := site.Data.structures -}}
+  {{- if or (hasPrefix $modKey "_") (not (reflect.IsMap $modVal)) }}{{ continue }}{{ end -}}
+  {{- if $modVal.arguments }}{{ continue }}{{ end -}}
+  {{- if eq $modKey "components" }}{{ continue }}{{ end -}}
+  {{- range $compName, $_ := (index $modVal "components" | default dict) -}}
+    {{- $blueprintNames = merge $blueprintNames (dict $compName true) -}}
+  {{- end -}}
+{{- end -}}
+
 {{- $components := slice -}}
+
+{{- /* Loop 1: flat structure files → hinode module */ -}}
 {{- range $name, $def := site.Data.structures -}}
   {{- if hasPrefix $name "_" }}{{ continue }}{{ end -}}
+  {{- if eq $name "components" }}{{ continue }}{{ end -}}
+  {{- if not $def.arguments }}{{ continue }}{{ end -}}
+  {{- if index $blueprintNames $name }}{{ continue }}{{ end -}}
+  {{- if eq (default "" $def.group) "partial" }}{{ continue }}{{ end -}}
   {{- $arguments := slice -}}
   {{- $deprecated := slice -}}
   {{- range $argName, $argVal := $def.arguments -}}
     {{- $g := index $globalArgs $argName | default dict -}}
-    {{- $argMap := dict -}}
-    {{- if reflect.IsMap $argVal }}{{- $argMap = $argVal -}}{{ end -}}
-    {{- $merged := merge $g $argMap -}}
-    {{- /* Skip group: partial args */ -}}
-    {{- if eq $merged.group "partial" }}{{ continue }}{{ end -}}
-    {{- /* Build argument entry */ -}}
+    {{- $localMap := dict -}}
+    {{- if reflect.IsMap $argVal }}{{- $localMap = $argVal -}}{{ end -}}
+    {{- $merged := merge $g $localMap -}}
+    {{- if eq (default "" $merged.group) "partial" }}{{ continue }}{{ end -}}
+    {{- $argType := $merged.type | default "string" -}}
+    {{- if reflect.IsSlice $argType -}}{{- $argType = index $argType 0 | default "string" -}}{{- end -}}
     {{- $entry := dict
       "name"        $argName
-      "type"        ($merged.type | default "string")
+      "type"        $argType
       "required"    (not (default false $merged.optional))
       "description" ($merged.comment | default "")
     -}}
@@ -38,6 +81,11 @@
     {{- else -}}
       {{- $entry = merge $entry (dict "since" nil) -}}
     {{- end -}}
+    {{- if not (in $primitiveTypes $argType) -}}
+      {{- with index $typesDict $argType -}}
+        {{- $entry = merge $entry (dict "fields" .fields) -}}
+      {{- end -}}
+    {{- end -}}
     {{- if $merged.deprecated -}}
       {{- $entry = merge $entry (dict
         "deprecated"  (printf "%v" $merged.deprecated)
@@ -49,15 +97,91 @@
     {{- end -}}
   {{- end -}}
   {{- $component := dict
-    "name"                $name
-    "description"         ($def.comment | default "")
-    "icon"                ($def.icon | default "")
-    "arguments"           $arguments
+    "name"                 $name
+    "module"               "hinode"
+    "description"          ($def.comment | default "")
+    "icon"                 ($def.icon | default "")
+    "arguments"            $arguments
     "deprecated_arguments" $deprecated
   -}}
   {{- with $def.body -}}
     {{- $component = merge $component (dict "body" .) -}}
   {{- end -}}
+  {{- with $def.children -}}
+    {{- $component = merge $component (dict "children" .) -}}
+  {{- end -}}
+  {{- with $def.example -}}
+    {{- $component = merge $component (dict "example" .) -}}
+  {{- end -}}
   {{- $components = $components | append $component -}}
 {{- end -}}
-{{ $components | jsonify (dict "indent" "  ") }}
+
+{{- /* Loop 2: module-namespaced blueprints (e.g. mod-blocks) */ -}}
+{{- range $modKey, $modVal := site.Data.structures -}}
+  {{- if or (hasPrefix $modKey "_") (not (reflect.IsMap $modVal)) }}{{ continue }}{{ end -}}
+  {{- if $modVal.arguments }}{{ continue }}{{ end -}}
+  {{- if eq $modKey "components" }}{{ continue }}{{ end -}}
+  {{- $moduleName := $modKey -}}
+  {{- range $compName, $compFiles := (index $modVal "components" | default dict) -}}
+    {{- $bKey := printf "%s.bookshop" $compName -}}
+    {{- $bData := index $compFiles $bKey | default dict -}}
+    {{- $blueprint := $bData.blueprint | default dict -}}
+    {{- $spec     := $bData.spec | default dict -}}
+    {{- $sidecarData := index $compFiles $compName | default dict -}}
+    {{- $sidecarArgs := $sidecarData.arguments | default dict -}}
+    {{- $arguments := slice -}}
+    {{- range $rawKey, $rawVal := $blueprint -}}
+      {{- $argName := replace $rawKey "_" "-" -}}
+      {{- $g := index $globalArgs $argName | default dict -}}
+      {{- $argType := $g.type | default "string" -}}
+      {{- if reflect.IsSlice $argType -}}{{- $argType = index $argType 0 | default "string" -}}{{- end -}}
+      {{- $sidecarArgDef := dict -}}
+      {{- with index $sidecarArgs $argName -}}
+        {{- if reflect.IsMap . -}}{{- $sidecarArgDef = . -}}{{- end -}}
+      {{- end -}}
+      {{- $required := not ($g.optional | default true) -}}
+      {{- if isset $sidecarArgDef "optional" -}}
+        {{- $required = not $sidecarArgDef.optional -}}
+      {{- end -}}
+      {{- $entry := dict
+        "name"        $argName
+        "type"        $argType
+        "required"    $required
+        "description" ($g.comment | default "")
+      -}}
+      {{- if and (not (reflect.IsMap $rawVal)) (not (reflect.IsSlice $rawVal)) $rawVal -}}
+        {{- $entry = merge $entry (dict "default" (printf "%v" $rawVal)) -}}
+      {{- else -}}
+        {{- with $g.default -}}
+          {{- $entry = merge $entry (dict "default" (printf "%v" .)) -}}
+        {{- else -}}
+          {{- $entry = merge $entry (dict "default" nil) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- with $g.options.values -}}
+        {{- $entry = merge $entry (dict "options" .) -}}
+      {{- else -}}
+        {{- $entry = merge $entry (dict "options" slice) -}}
+      {{- end -}}
+      {{- if not (in $primitiveTypes $argType) -}}
+        {{- with index $typesDict $argType -}}
+          {{- $entry = merge $entry (dict "fields" .fields) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $arguments = $arguments | append $entry -}}
+    {{- end -}}
+    {{- $component := dict
+      "name"                 $compName
+      "module"               $moduleName
+      "description"          ($spec.description | default "")
+      "icon"                 ($spec.icon | default "")
+      "arguments"            $arguments
+      "deprecated_arguments" slice
+    -}}
+    {{- with $sidecarData.example -}}
+      {{- $component = merge $component (dict "example" .) -}}
+    {{- end -}}
+    {{- $components = $components | append $component -}}
+  {{- end -}}
+{{- end -}}
+{{ dict "types" $typesDict "components" (sort $components "name") | jsonify (dict "indent" "  ") }}
