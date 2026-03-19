@@ -1,3 +1,4 @@
+{{- $page := . -}}
 {{- $out := "" -}}
 {{- range .Params.content_blocks -}}
   {{- $name := ._bookshop_name -}}
@@ -6,7 +7,10 @@
   {{- with .heading }}{{- with .title }}{{- $title = . -}}{{- end }}{{- end -}}
   {{- with .heading }}{{- with .preheading }}{{- $title = printf "%s — %s" . $title -}}{{- end }}{{- end -}}
   {{- $body := "" -}}
-  {{- with .heading }}{{- with .content }}{{- $body = printf "%s%s\n\n" $body . -}}{{- end }}{{- end -}}
+  {{- with .heading }}{{- with .content -}}
+    {{- $processed := partial "llm/safe-content.html" (dict "Page" $page "Content" .) -}}
+    {{- $body = printf "%s%s\n\n" $body $processed -}}
+  {{- end }}{{- end -}}
   {{- $partial := printf "bookshop/components/%s/%s.hugo.md" $name $name -}}
   {{- if templates.Exists (printf "partials/%s" $partial) -}}
     {{- $body = printf "%s%s\n\n" $body (printf "%s" (partial $partial .)) -}}
