@@ -10,6 +10,8 @@ github.com/gethinode/hinode/v2 v2.0.0-beta.82 h1:H10vIDZOvMtf6XGGWZpd40GCW6qzi+L
 github.com/gethinode/hinode/v2 v2.0.0-beta.82/go.mod h1:7WDJW9ydmwx+vb3bywALuTLQY+qDqL+14PsH+B2cNik=
 github.com/gethinode/hinode/v2 v2.0.0-beta.83 h1:v9wUtjfzC8rtmM79pU2Hdou/dn3/H1Neb1B9SV8wlmw=
 github.com/gethinode/hinode/v2 v2.0.0-beta.83/go.mod h1:7WDJW9ydmwx+vb3bywALuTLQY+qDqL+14PsH+B2cNik=
+github.com/gethinode/hinode/v2 v2.0.0-beta.84 h1:SbHjQeOGPVsDmADGZ6Jvw5h37ekRs/9P406hGeojx7Q=
+github.com/gethinode/hinode/v2 v2.0.0-beta.84/go.mod h1:CZoHUIwlGmBIXMhjOPGx74iwIXxjwEeaq96kqBi4YRg=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
 github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
@@ -28,6 +30,8 @@ github.com/gethinode/mod-docs v1.6.3 h1:D+Z0XLI4p62BGe8XpRSLgh4/Rwr42KP5zhgOIRfG
 github.com/gethinode/mod-docs v1.6.3/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-flexsearch/v4 v4.0.0 h1:gBDXTaV+N0tyAUfM4vaQXyzYim9DpS6ifdmvzUxirf0=
 github.com/gethinode/mod-flexsearch/v4 v4.0.0/go.mod h1:GEaf4tD8AOpI/6eZH/aPuG1hrWxwSEiDtDPF0Ow73YI=
+github.com/gethinode/mod-flexsearch/v4 v4.0.1 h1:oMPogeGHu67K9ADNm+IdWYr2XNBDVohKpHVLRkvC0Xg=
+github.com/gethinode/mod-flexsearch/v4 v4.0.1/go.mod h1:GEaf4tD8AOpI/6eZH/aPuG1hrWxwSEiDtDPF0Ow73YI=
 github.com/gethinode/mod-fontawesome/v5 v5.0.7 h1:aJmSBddlg0AtmtKx+YQL8r1G6xwVgSgQ/heAo4a1s7Q=
 github.com/gethinode/mod-fontawesome/v5 v5.0.7/go.mod h1:Ez2jywor0jNGHBojEJ1KtJkUiFLjaZixehnwsMsTsrY=
 github.com/gethinode/mod-fontawesome/v5 v5.0.8 h1:BAlV+BMlk6FEuLwm8hRn3wT6wH8i6496lB0Rc9ZLC/g=
@@ -44,6 +48,8 @@ github.com/gethinode/mod-llm v0.0.0-20260316133619-e8a639bd16e3 h1:JzAKLsr3uMGYG
 github.com/gethinode/mod-llm v0.0.0-20260316133619-e8a639bd16e3/go.mod h1:8Fr0gHMaGOwyOA11cozmFZN4KsQ+3UKR9dTlVS3nd9I=
 github.com/gethinode/mod-llm v1.0.0 h1:ftizU2E9hjv6AQ6q8SERaUuZYIskNpnTXROKhKn2WQM=
 github.com/gethinode/mod-llm v1.0.0/go.mod h1:xpBdXSkNX/2EUQVyB1C0KiuWD2gxOjAmiZ9amTBPC5A=
+github.com/gethinode/mod-llm v1.1.3 h1:DEg7Jvb9Of+8srym37nRDCoUsv2QwbkqdcsIl1QW5Iw=
+github.com/gethinode/mod-llm v1.1.3/go.mod h1:FKued2R0Aa+CGe5+lo+9TGZGwluHjcDLoxD4gfoWs7U=
 github.com/gethinode/mod-lottie/v2 v2.0.1 h1:jIY5oGHtkXXvJoxNAE2AueoqxqNNlTYHF4+igQmkIAU=
 github.com/gethinode/mod-lottie/v2 v2.0.1/go.mod h1:/YzhRcG9H8MyODt8qaOQP0nqoux7EFHW2S7ugiiFf0o=
 github.com/gethinode/mod-lottie/v2 v2.1.0 h1:d0ViSsZr8idst7/zWTjCHp93jdX9fPHeGaAHEhi7lO4=
