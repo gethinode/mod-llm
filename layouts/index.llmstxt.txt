@@ -9,7 +9,7 @@
 {{- $sections := dict -}}
 {{- $sectionOrder := slice -}}
 {{- /* Prepend homepage to the pages section */ -}}
-{{- if not $site.Home.Params.llm.exclude -}}
+{{- if and (not $site.Home.Params.llm.exclude) ($site.Home.OutputFormats.Get "markdown") -}}
   {{- $sectionOrder = $sectionOrder | append "pages" -}}
   {{- $sections = merge $sections (dict "pages" (slice $site.Home)) -}}
 {{- end -}}
