@@ -27,7 +27,7 @@ title = 'Test site for mod-llm'
     root = true
 
 [outputs]
-  home = ["HTML", "llmstxt", "llmscomponents"]
+  home = ["HTML", "llmstxt", "llmscomponents", "markdown"]
   page = ["HTML", "markdown"]
 
 [module]

@@ -76,7 +76,7 @@ Activate the formats in the `[outputs]` section of your `hugo.toml`. Include `ll
 
 ```toml
 [outputs]
-  home = ["HTML", "llmstxt"]   # add "llmscomponents" for documentation sites
+  home = ["HTML", "llmstxt", "markdown"]   # add "llmscomponents" for documentation sites
   page = ["HTML", "markdown"]
 ```
 
