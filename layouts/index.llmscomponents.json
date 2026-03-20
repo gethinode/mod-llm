@@ -1,6 +1,22 @@
 {{- $globalArgs := ((index site.Data.structures "_arguments") | default dict).arguments | default dict -}}
 {{- $types := (index site.Data.structures "_types" | default dict).types | default dict -}}
 
+{{- /* Parse hinode version from go.mod */ -}}
+{{- $hinodeVersion := "" -}}
+{{- $goMod := os.ReadFile "go.mod" | default "" -}}
+{{- $vMatches := findRESubmatch `github\.com/gethinode/hinode(?:/v\d+)?\s+(v[^\s]+)` $goMod -}}
+{{- with $vMatches -}}
+  {{- $hinodeVersion = index (index . 0) 1 -}}
+{{- end -}}
+
+{{- /* Meta envelope */ -}}
+{{- $meta := dict
+  "description" "Hinode component schema for LLM agents. Components with usage=shortcode are invoked inline in Hugo markdown as {{< name arg=\"value\" >}}. Components with usage=content_block are declared in page frontmatter YAML under content_blocks: — the two syntaxes are incompatible."
+  "theme" "hinode"
+  "version" $hinodeVersion
+  "generated" (now.Format "2006-01-02T15:04:05Z07:00")
+-}}
+
 {{- /* Build $typesDict: map of type name → { kind, fields } */ -}}
 {{- $typesDict := dict -}}
 {{- range $typeName, $typeDef := $types -}}
@@ -11,9 +27,11 @@
   {{- $fields := slice -}}
   {{- range $fieldName, $_ := $src -}}
     {{- $g := index $globalArgs $fieldName | default dict -}}
+    {{- $fieldType := $g.type | default "string" -}}
+    {{- if reflect.IsSlice $fieldType -}}{{- $fieldType = index $fieldType 0 | default "string" -}}{{- end -}}
     {{- $fields = $fields | append (dict
       "name"        $fieldName
-      "type"        ($g.type | default "string")
+      "type"        $fieldType
       "description" ($g.comment | default "")
     ) -}}
   {{- end -}}
@@ -38,7 +56,7 @@
 
 {{- $components := slice -}}
 
-{{- /* Loop 1: flat structure files → hinode module */ -}}
+{{- /* Loop 1: flat structure files → hinode shortcodes */ -}}
 {{- range $name, $def := site.Data.structures -}}
   {{- if hasPrefix $name "_" }}{{ continue }}{{ end -}}
   {{- if eq $name "components" }}{{ continue }}{{ end -}}
@@ -61,8 +79,13 @@
       "required"    (not (default false $merged.optional))
       "description" ($merged.comment | default "")
     -}}
-    {{- with $merged.default -}}
-      {{- $entry = merge $entry (dict "default" (printf "%v" .)) -}}
+    {{- if isset $merged "default" -}}
+      {{- $d := $merged.default -}}
+      {{- if eq (printf "%T" $d) "bool" -}}
+        {{- $entry = merge $entry (dict "default" $d) -}}
+      {{- else -}}
+        {{- $entry = merge $entry (dict "default" (printf "%v" $d)) -}}
+      {{- end -}}
     {{- else -}}
       {{- $entry = merge $entry (dict "default" nil) -}}
     {{- end -}}
@@ -99,6 +122,7 @@
   {{- $component := dict
     "name"                 $name
     "module"               "hinode"
+    "usage"                "shortcode"
     "description"          ($def.comment | default "")
     "icon"                 ($def.icon | default "")
     "arguments"            $arguments
@@ -116,7 +140,7 @@
   {{- $components = $components | append $component -}}
 {{- end -}}
 
-{{- /* Loop 2: module-namespaced blueprints (e.g. mod-blocks) */ -}}
+{{- /* Loop 2: module-namespaced blueprints (e.g. mod-blocks) → content blocks */ -}}
 {{- range $modKey, $modVal := site.Data.structures -}}
   {{- if or (hasPrefix $modKey "_") (not (reflect.IsMap $modVal)) }}{{ continue }}{{ end -}}
   {{- if $modVal.arguments }}{{ continue }}{{ end -}}
@@ -150,10 +174,19 @@
         "description" ($g.comment | default "")
       -}}
       {{- if and (not (reflect.IsMap $rawVal)) (not (reflect.IsSlice $rawVal)) $rawVal -}}
-        {{- $entry = merge $entry (dict "default" (printf "%v" $rawVal)) -}}
+        {{- if eq (printf "%T" $rawVal) "bool" -}}
+          {{- $entry = merge $entry (dict "default" $rawVal) -}}
+        {{- else -}}
+          {{- $entry = merge $entry (dict "default" (printf "%v" $rawVal)) -}}
+        {{- end -}}
       {{- else -}}
-        {{- with $g.default -}}
-          {{- $entry = merge $entry (dict "default" (printf "%v" .)) -}}
+        {{- if isset $g "default" -}}
+          {{- $d := $g.default -}}
+          {{- if eq (printf "%T" $d) "bool" -}}
+            {{- $entry = merge $entry (dict "default" $d) -}}
+          {{- else -}}
+            {{- $entry = merge $entry (dict "default" (printf "%v" $d)) -}}
+          {{- end -}}
         {{- else -}}
           {{- $entry = merge $entry (dict "default" nil) -}}
         {{- end -}}
@@ -173,6 +206,7 @@
     {{- $component := dict
       "name"                 $compName
       "module"               $moduleName
+      "usage"                "content_block"
       "description"          ($spec.description | default "")
       "icon"                 ($spec.icon | default "")
       "arguments"            $arguments
@@ -184,4 +218,4 @@
     {{- $components = $components | append $component -}}
   {{- end -}}
 {{- end -}}
-{{ dict "types" $typesDict "components" (sort $components "name") | jsonify (dict "indent" "  ") }}
+{{ dict "meta" $meta "types" $typesDict "components" (sort $components "name") | jsonify (dict "indent" "  ") }}
