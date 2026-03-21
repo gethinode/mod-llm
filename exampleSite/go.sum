@@ -60,6 +60,8 @@ github.com/gethinode/mod-llm v1.1.3 h1:DEg7Jvb9Of+8srym37nRDCoUsv2QwbkqdcsIl1QW5
 github.com/gethinode/mod-llm v1.1.3/go.mod h1:FKued2R0Aa+CGe5+lo+9TGZGwluHjcDLoxD4gfoWs7U=
 github.com/gethinode/mod-llm v1.1.4 h1:b24WmPbENDbXdWkf2xOFAsVjV4QgD53ZHpdsz+BVSHk=
 github.com/gethinode/mod-llm v1.1.4/go.mod h1:FKued2R0Aa+CGe5+lo+9TGZGwluHjcDLoxD4gfoWs7U=
+github.com/gethinode/mod-llm v1.2.0 h1:1FuF1mQDeA6H5Aig9c+0Kgv2fhz6IF0+a6ri5dXkW8g=
+github.com/gethinode/mod-llm v1.2.0/go.mod h1:pysjxyml7Gf96IaJjAV4vmkj1F1LJNcgs8QK8U7/dmM=
 github.com/gethinode/mod-lottie/v2 v2.0.1 h1:jIY5oGHtkXXvJoxNAE2AueoqxqNNlTYHF4+igQmkIAU=
 github.com/gethinode/mod-lottie/v2 v2.0.1/go.mod h1:/YzhRcG9H8MyODt8qaOQP0nqoux7EFHW2S7ugiiFf0o=
 github.com/gethinode/mod-lottie/v2 v2.1.0 h1:d0ViSsZr8idst7/zWTjCHp93jdX9fPHeGaAHEhi7lO4=
