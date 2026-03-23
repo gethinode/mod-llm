@@ -20,12 +20,16 @@ github.com/gethinode/hinode/v2 v2.0.0-beta.87 h1:gSWLwwOc4c7OYINzd1qJBIPQ9ohwEEg
 github.com/gethinode/hinode/v2 v2.0.0-beta.87/go.mod h1:mKwam4vd/W0GH4BNSHQIlfxxfW2lfFZ8Ckqq57BmjA0=
 github.com/gethinode/hinode/v2 v2.0.0-beta.88 h1:CDc1NJY+PvvCiTMS1htAfwwnd9QprGr7ci7XA4LSOvI=
 github.com/gethinode/hinode/v2 v2.0.0-beta.88/go.mod h1:mKwam4vd/W0GH4BNSHQIlfxxfW2lfFZ8Ckqq57BmjA0=
+github.com/gethinode/hinode/v2 v2.0.0-beta.89 h1:CZgCWVGGPjwDHsBx4iT2DbB8CrK087fJWUsN+NCe2Bk=
+github.com/gethinode/hinode/v2 v2.0.0-beta.89/go.mod h1:DAz2EP6t5DdXoK411zTK6HJwYfsMRcPd80zIimSfTLY=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
 github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
 github.com/gethinode/mod-blocks v1.14.0/go.mod h1:xcYuTxTh0DJz2zQqERgG5Tjzj7Sr+luQjvqfc04K3tI=
 github.com/gethinode/mod-blocks v1.15.1 h1:gKUclJD+yUhsrLRr5uheOJ2MMLK2EuAAZFZI6nCpc68=
 github.com/gethinode/mod-blocks v1.15.1/go.mod h1:A9WagW9TCZxv/VsVF92CATjfxeVDKBrhF1n33IV9250=
+github.com/gethinode/mod-blocks v1.15.2 h1:Sx1HdveBvJuQlTw1rfKwW4nkVZfJuien+6CykLGvo90=
+github.com/gethinode/mod-blocks v1.15.2/go.mod h1:iG/4tXktwqgUyzHyRbuAHmGsdQwmEhUG/YkufNcUe+k=
 github.com/gethinode/mod-bootstrap v1.3.5 h1:bewgYpQex+dBABK0u5PUvW6IoUXLHhi1Yv9hcPzwGVc=
 github.com/gethinode/mod-bootstrap v1.3.5/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap-icons v1.4.1 h1:XgP3VU8YiH3FLbF35yltddZKoD6gMC53PYEq3GJ9U4M=
@@ -44,6 +48,8 @@ github.com/gethinode/mod-fontawesome/v5 v5.0.7 h1:aJmSBddlg0AtmtKx+YQL8r1G6xwVgS
 github.com/gethinode/mod-fontawesome/v5 v5.0.7/go.mod h1:Ez2jywor0jNGHBojEJ1KtJkUiFLjaZixehnwsMsTsrY=
 github.com/gethinode/mod-fontawesome/v5 v5.0.8 h1:BAlV+BMlk6FEuLwm8hRn3wT6wH8i6496lB0Rc9ZLC/g=
 github.com/gethinode/mod-fontawesome/v5 v5.0.8/go.mod h1:6TtI+LriOd4PmUGsNF0IOnyAwysblLMonCIy3tcvAJ8=
+github.com/gethinode/mod-fontawesome/v5 v5.1.0 h1:u3ntQMe1fGntcrljxrbZXA9Q0z2WHlmbPT0sL+Uw1o8=
+github.com/gethinode/mod-fontawesome/v5 v5.1.0/go.mod h1:b9nG1pel6LIWiNyb0kZAmyhLo2rrx4dvG2xyoD8tDlk=
 github.com/gethinode/mod-google-analytics/v2 v2.0.0 h1:Vor4j56qtpjtKY9r5QLeN5CBxuf8YKP3+XvQKEkayrM=
 github.com/gethinode/mod-google-analytics/v2 v2.0.0/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
 github.com/gethinode/mod-katex v1.1.4 h1:HWc45uHKX2JhI624UnA46LCZkLGhSbaq+zAHt9e57zw=
