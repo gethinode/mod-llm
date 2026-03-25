@@ -6,6 +6,8 @@ github.com/cloudcannon/bookshop/hugo/v3 v3.17.1 h1:weTVWBamjQHMIp/oYTFsPwRzzhWrZ
 github.com/cloudcannon/bookshop/hugo/v3 v3.17.1/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.0 h1:Hy4UrNwvXBC1TiTmsGnYp8T1VLbdK/NBNvj7HphLBpI=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.0/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.2 h1:j3XUvvuCv/7SfGKzd7gzb3WEgs1DurqTRDe7gdMAAvU=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.2/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81 h1:HA7C2veNPHg5VXe+Zsub+gDezcsdOJkoT5k/8k44CmI=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81/go.mod h1:Lj9fhJwkg5CeDUf5VpgTF3kMPzwYspo/u5N9uS5FEsY=
 github.com/gethinode/hinode/v2 v2.0.0-beta.82 h1:H10vIDZOvMtf6XGGWZpd40GCW6qzi+L4bgYtxNtcJNg=
@@ -24,6 +26,8 @@ github.com/gethinode/hinode/v2 v2.0.0-beta.88 h1:CDc1NJY+PvvCiTMS1htAfwwnd9QprGr
 github.com/gethinode/hinode/v2 v2.0.0-beta.88/go.mod h1:mKwam4vd/W0GH4BNSHQIlfxxfW2lfFZ8Ckqq57BmjA0=
 github.com/gethinode/hinode/v2 v2.0.0-beta.89 h1:CZgCWVGGPjwDHsBx4iT2DbB8CrK087fJWUsN+NCe2Bk=
 github.com/gethinode/hinode/v2 v2.0.0-beta.89/go.mod h1:DAz2EP6t5DdXoK411zTK6HJwYfsMRcPd80zIimSfTLY=
+github.com/gethinode/hinode/v2 v2.1.0 h1:xL1d//kNycG1xFR8Z1eABl1dWkKgAW89JWKWkgcfYbM=
+github.com/gethinode/hinode/v2 v2.1.0/go.mod h1:DAz2EP6t5DdXoK411zTK6HJwYfsMRcPd80zIimSfTLY=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
 github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
@@ -42,6 +46,8 @@ github.com/gethinode/mod-csp v1.0.9 h1:Bt4agpC/Wy56Gabt8Ox2LbNoj2yrSYXCzY2o69D3d
 github.com/gethinode/mod-csp v1.0.9/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
 github.com/gethinode/mod-docs v1.6.3 h1:D+Z0XLI4p62BGe8XpRSLgh4/Rwr42KP5zhgOIRfG/xQ=
 github.com/gethinode/mod-docs v1.6.3/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
+github.com/gethinode/mod-docs v1.7.0 h1:xNk87WXBlUfYTKbr6OW2EXYX8x62XIz5iPcMm4P9J5M=
+github.com/gethinode/mod-docs v1.7.0/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-flexsearch/v4 v4.0.0 h1:gBDXTaV+N0tyAUfM4vaQXyzYim9DpS6ifdmvzUxirf0=
 github.com/gethinode/mod-flexsearch/v4 v4.0.0/go.mod h1:GEaf4tD8AOpI/6eZH/aPuG1hrWxwSEiDtDPF0Ow73YI=
 github.com/gethinode/mod-flexsearch/v4 v4.0.1 h1:oMPogeGHu67K9ADNm+IdWYr2XNBDVohKpHVLRkvC0Xg=
