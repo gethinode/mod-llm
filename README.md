@@ -78,10 +78,11 @@ Activate the formats in the `[outputs]` section of your `hugo.toml`. Include `ll
 [outputs]
   home = ["HTML", "llmstxt", "markdown"]   # add "llmscomponents" for documentation sites
   page = ["HTML", "markdown"]
+  section = ["HTML", "markdown"]
 ```
 
 > [!NOTE]
-> If your site already defines `[outputs]`, extend the existing lists rather than replacing them. The `HTML` output must remain to keep the regular site building correctly.
+> If your site already defines `[outputs]`, extend the existing lists rather than replacing them. The `HTML` output must remain to keep the regular site building correctly. The `section` key ensures section index pages (`_index.md`) get a Markdown equivalent and are linked from `llms.txt`.
 
 ## Contributing
 

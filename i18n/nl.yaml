@@ -19,10 +19,14 @@
   translation: Artikelen
 - id: llm-block-cards
   translation: Kaarten
+- id: llm-block-contact-form
+  translation: Contactformulier
 - id: llm-block-cta
   translation: Oproep tot actie
 - id: llm-block-faq
   translation: FAQ
+- id: llm-block-heading
+  translation: Koptekst
 - id: llm-block-featured
   translation: Uitgelicht
 - id: llm-block-hero

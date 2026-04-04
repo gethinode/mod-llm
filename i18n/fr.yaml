@@ -19,10 +19,14 @@
   translation: Articles
 - id: llm-block-cards
   translation: Cartes
+- id: llm-block-contact-form
+  translation: Formulaire de contact
 - id: llm-block-cta
   translation: Appel à l'action
 - id: llm-block-faq
   translation: FAQ
+- id: llm-block-heading
+  translation: En-tête
 - id: llm-block-featured
   translation: En vedette
 - id: llm-block-hero
