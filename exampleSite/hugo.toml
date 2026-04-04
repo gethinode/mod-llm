@@ -29,6 +29,7 @@ title = 'Test site for mod-llm'
 [outputs]
   home = ["HTML", "llmstxt", "llmscomponents", "markdown"]
   page = ["HTML", "markdown"]
+  section = ["HTML", "markdown"]
 
 [module]
   # Build and serve using local mod-llm clone declared in the named Hugo workspace:

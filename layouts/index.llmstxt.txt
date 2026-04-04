@@ -5,38 +5,87 @@
 
 > {{ with $site.Params.main.description }}{{ . }}{{ else }}{{ $site.Title }}{{ end }}
 
-{{- /* Collect pages grouped by section, default language only, skip excluded */ -}}
+{{- /*
+  Collect all pages into an ordered map of section → page list.
+  $sections:     dict mapping section key → slice of pages
+  $sectionOrder: slice of section keys in encounter order (controls output order)
+*/ -}}
 {{- $sections := dict -}}
 {{- $sectionOrder := slice -}}
-{{- /* Prepend homepage to the pages section */ -}}
+
+{{- /* Homepage is always first in the Pages section, unless excluded or missing markdown output */ -}}
 {{- if and (not $site.Home.Params.llm.exclude) ($site.Home.OutputFormats.Get "markdown") -}}
   {{- $sectionOrder = $sectionOrder | append "pages" -}}
   {{- $sections = merge $sections (dict "pages" (slice $site.Home)) -}}
 {{- end -}}
-{{- range $site.RegularPages -}}
-  {{- if and (eq .Language.Lang $site.Language.Lang) (not .Params.llm.exclude) -}}
-    {{- $section := .Section | default "pages" -}}
-    {{- if not (index $sections $section) -}}
-      {{- $sectionOrder = $sectionOrder | append $section -}}
+
+{{- /*
+  Iterate over all regular pages and section index pages.
+  RegularPages first so sections can check whether child pages already registered them.
+  Headless bundles (.RelPermalink == "") and llm.exclude pages are skipped.
+*/ -}}
+{{- $allPages := $site.RegularPages | append $site.Sections -}}
+{{- range $allPages -}}
+  {{- if and (eq .Language.Lang $site.Language.Lang) (not .Params.llm.exclude) .RelPermalink -}}
+    {{- if eq .Kind "section" -}}
+      {{- $hasChildren := or (len .RegularPages) (len .Sections) -}}
+      {{- if not $hasChildren -}}
+        {{- /*
+          Standalone section index (no child pages) — treat as a regular content page
+          and place it under the flat Pages section rather than its own heading.
+          Example: /pricing/, /data-catalog/, /releases/
+        */ -}}
+        {{- if not (index $sections "pages") -}}
+          {{- $sectionOrder = $sectionOrder | append "pages" -}}
+        {{- end -}}
+        {{- $sectionPages := index $sections "pages" | default slice -}}
+        {{- $sections = merge $sections (dict "pages" ($sectionPages | append .)) -}}
+      {{- else -}}
+        {{- /*
+          Section index with child pages — register the section if not yet seen, then
+          prepend the index page so it leads the section list.
+          Skip the index page entirely if its title matches the section key (e.g. "Insights"
+          under ## Insights), since the heading already communicates the same information.
+        */ -}}
+        {{- $section := .Section | default "pages" -}}
+        {{- if not (index $sections $section) -}}
+          {{- $sectionOrder = $sectionOrder | append $section -}}
+          {{- $sections = merge $sections (dict $section (slice)) -}}
+        {{- end -}}
+        {{- if ne (.Title | lower) $section -}}
+          {{- $sectionPages := index $sections $section | default slice -}}
+          {{- $sections = merge $sections (dict $section (slice . | append $sectionPages)) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- /* Regular page — append to its section, registering the section on first encounter */ -}}
+      {{- $section := .Section | default "pages" -}}
+      {{- if not (index $sections $section) -}}
+        {{- $sectionOrder = $sectionOrder | append $section -}}
+      {{- end -}}
+      {{- $sectionPages := index $sections $section | default slice -}}
+      {{- $sections = merge $sections (dict $section ($sectionPages | append .)) -}}
     {{- end -}}
-    {{- $sectionPages := index $sections $section | default slice -}}
-    {{- $sections = merge $sections (dict $section ($sectionPages | append .)) -}}
   {{- end -}}
 {{- end -}}
 
+{{- /* Render each section as a level-2 heading followed by its page list */ -}}
 {{- range $section := $sectionOrder }}
 
 ## {{ $section | title }}
 
 {{ range $pages := index $sections $section -}}
+{{- /* Prefer explicit llm.description, then front matter description, then truncated summary */ -}}
 {{- $desc := or .Params.llm.description .Description (.Summary | plainify | truncate 120) -}}
 {{- $hasMarkdown := .OutputFormats.Get "markdown" -}}
 {{- $link := .Permalink -}}
 {{- if $hasMarkdown }}{{- $link = printf "%sindex.md" .Permalink -}}{{ end -}}
+{{- /* Use site title for the homepage — the page title is typically a marketing tagline */ -}}
+{{- $title := cond .IsHome $site.Title .Title -}}
 {{- if $desc -}}
-{{- printf "- [%s](%s): %s\n" .Title $link $desc -}}
+{{- printf "- [%s](%s): %s\n" $title $link $desc -}}
 {{- else -}}
-{{- printf "- [%s](%s)\n" .Title $link -}}
+{{- printf "- [%s](%s)\n" $title $link -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}
