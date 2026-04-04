@@ -19,10 +19,14 @@
   translation: 文章
 - id: llm-block-cards
   translation: 卡片
+- id: llm-block-contact-form
+  translation: 联系表单
 - id: llm-block-cta
   translation: 行动号召
 - id: llm-block-faq
   translation: 常见问题
+- id: llm-block-heading
+  translation: 标题
 - id: llm-block-featured
   translation: 精选
 - id: llm-block-hero
