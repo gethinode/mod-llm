@@ -26,7 +26,7 @@
 */ -}}
 {{- $allPages := $site.RegularPages | append $site.Sections -}}
 {{- range $allPages -}}
-  {{- if and (eq .Language.Lang $site.Language.Lang) (not .Params.llm.exclude) .RelPermalink -}}
+  {{- if and (eq .Language.Lang $site.Language.Lang) (not .Params.llm.exclude) .RelPermalink .Title -}}
     {{- if eq .Kind "section" -}}
       {{- $hasChildren := or (len .RegularPages) (len .Sections) -}}
       {{- if not $hasChildren -}}
