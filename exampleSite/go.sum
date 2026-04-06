@@ -40,6 +40,8 @@ github.com/gethinode/hinode/v2 v2.2.3 h1:mZE3PQmAD0ZWI2ICie3kzWgK2WjqU2UUZ+kCbgN
 github.com/gethinode/hinode/v2 v2.2.3/go.mod h1:3h5VvTRz+92liAswHi7G/gJAfCziuLL2KUkZikKxQpQ=
 github.com/gethinode/hinode/v2 v2.2.4 h1:g+hXJftihBrEOBjEbJI8fKBz7etdV4A7Pqdzf0okAlk=
 github.com/gethinode/hinode/v2 v2.2.4/go.mod h1:cYLI206auGuW79iZGvOUTeDLDuI9ckMaCw+S1VSAXMM=
+github.com/gethinode/hinode/v2 v2.2.5 h1:vuNDj/p4GiSnmntL/Cc9L2km+yzfs629RJCOUpHfhV8=
+github.com/gethinode/hinode/v2 v2.2.5/go.mod h1:4khIQWK6OIOb3KfZWQk+QrhLrGf3vraHaze4dMFjUxk=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
 github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
@@ -58,6 +60,8 @@ github.com/gethinode/mod-blocks v1.18.0 h1:zOlvsHo0td407WztbaRJRHYHvuc53FJcQcYvf
 github.com/gethinode/mod-blocks v1.18.0/go.mod h1:sAMe4iLdX14DQQ8cl0GN6k1TTjZzpRnKQ9OafgN9rAw=
 github.com/gethinode/mod-blocks v1.18.1 h1:FjMDAqgiNyZcRQYkHeQjzN7tyDEwxNrq4SCyHKxVYMs=
 github.com/gethinode/mod-blocks v1.18.1/go.mod h1:sAMe4iLdX14DQQ8cl0GN6k1TTjZzpRnKQ9OafgN9rAw=
+github.com/gethinode/mod-blocks v1.19.1 h1:rBr+GRFJCvm9k7tm+q26X6r3uX25wTeH7X4U9y0qtJg=
+github.com/gethinode/mod-blocks v1.19.1/go.mod h1:sAMe4iLdX14DQQ8cl0GN6k1TTjZzpRnKQ9OafgN9rAw=
 github.com/gethinode/mod-bootstrap v1.3.5 h1:bewgYpQex+dBABK0u5PUvW6IoUXLHhi1Yv9hcPzwGVc=
 github.com/gethinode/mod-bootstrap v1.3.5/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap-icons v1.4.1 h1:XgP3VU8YiH3FLbF35yltddZKoD6gMC53PYEq3GJ9U4M=
@@ -92,6 +96,8 @@ github.com/gethinode/mod-fontawesome/v5 v5.1.0 h1:u3ntQMe1fGntcrljxrbZXA9Q0z2WHl
 github.com/gethinode/mod-fontawesome/v5 v5.1.0/go.mod h1:b9nG1pel6LIWiNyb0kZAmyhLo2rrx4dvG2xyoD8tDlk=
 github.com/gethinode/mod-google-analytics/v2 v2.0.0 h1:Vor4j56qtpjtKY9r5QLeN5CBxuf8YKP3+XvQKEkayrM=
 github.com/gethinode/mod-google-analytics/v2 v2.0.0/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
+github.com/gethinode/mod-google-analytics/v2 v2.0.1 h1:WNI8e06Bl1pLYrt1Adwuk4KtU9uVrJmO+KZxggIcI0M=
+github.com/gethinode/mod-google-analytics/v2 v2.0.1/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
 github.com/gethinode/mod-katex v1.1.4 h1:HWc45uHKX2JhI624UnA46LCZkLGhSbaq+zAHt9e57zw=
 github.com/gethinode/mod-katex v1.1.4/go.mod h1:byAfpI3wuqNJIooTGVEGc1cjBhhCy4+CcK1H6495MYg=
 github.com/gethinode/mod-leaflet/v2 v2.0.0 h1:94sQHzzrgB15LuePziHahss/SgJ21a2kDsOx4eE4e7A=
