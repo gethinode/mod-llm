@@ -13,7 +13,7 @@ require (
 	github.com/gethinode/mod-cookieyes/v2 v2.2.6 // indirect
 	github.com/gethinode/mod-csp v1.0.9 // indirect
 	github.com/gethinode/mod-docs v1.13.2 // indirect
-	github.com/gethinode/mod-flexsearch/v4 v4.1.2 // indirect
+	github.com/gethinode/mod-flexsearch/v4 v4.2.0 // indirect
 	github.com/gethinode/mod-fontawesome/v5 v5.1.1 // indirect
 	github.com/gethinode/mod-google-analytics/v2 v2.0.1 // indirect
 	github.com/gethinode/mod-katex v1.1.4 // indirect
