@@ -96,7 +96,10 @@
   Step 6: Warn and strip any residual HTML.
   Code fences and inline code spans are protected from detection and stripping
   so that e.g. `<button>` in documentation text is not treated as HTML.
-  This should only fire for shortcodes that lack a .md template.
+  Benign inline HTML with a clean plain-text equivalent (<br>, stray <p>) is
+  normalized BEFORE detection, so it is converted losslessly rather than
+  flagged. The warning is therefore reserved for genuinely-unhandled HTML — a
+  shortcode rendered without a .md template, or block-level raw HTML.
 */ -}}
 {{- $sc.Set "codeN" 0 -}}
 {{- $strippable := $content -}}
@@ -112,9 +115,10 @@
   {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
   {{- $strippable = replace $strippable . $ph -}}
 {{- end -}}
+{{- $strippable = $strippable | replaceRE `(?i)<br\s*/?>` "\n" | replaceRE `</?p>` "" -}}
 {{- if findRE `(?i)<[a-z][a-z0-9]*[\s>/]` $strippable -}}
-  {{- warnf "llm/safe-content: '%s' has HTML in markdown output — a shortcode may be missing a .md template" $page.RelPermalink -}}
-  {{- $strippable = $strippable | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" | replaceRE `(?i)</?[a-zA-Z][^>]*>` "" -}}
+  {{- warnf "llm/safe-content: '%s' has residual HTML stripped from the markdown output — a shortcode may be missing a .md template, or the source contains raw inline HTML" $page.RelPermalink -}}
+  {{- $strippable = $strippable | replaceRE `(?i)</?[a-zA-Z][^>]*>` "" -}}
 {{- end -}}
 {{- range $ph, $block := ($sc.Get "codeblocks") -}}
   {{- $strippable = replace $strippable $ph $block -}}
