@@ -84,6 +84,8 @@ github.com/gethinode/hinode/v2 v2.11.4 h1:djp4SBbN5g/7p9pJprM/W7doh32Rj6PfAgoh9b
 github.com/gethinode/hinode/v2 v2.11.4/go.mod h1:nBvTyf6dhJIgBbClsIyCWrOb9RSO2vKM3GnStSR56D4=
 github.com/gethinode/hinode/v2 v2.12.0 h1:s0fHH74ZLPv88vXw7RLDYYggpckoOZWBX0RcMZLc+Z4=
 github.com/gethinode/hinode/v2 v2.12.0/go.mod h1:69RSie5ub0JGbTr+WtHZNLLaU0JNDhzPHdJAbxuykjE=
+github.com/gethinode/hinode/v2 v2.12.1 h1:eISoR8Sh6rIE6J5jqvkQFVr8f76KkezL+KicpeXRU7A=
+github.com/gethinode/hinode/v2 v2.12.1/go.mod h1:69RSie5ub0JGbTr+WtHZNLLaU0JNDhzPHdJAbxuykjE=
 github.com/gethinode/mod-blocks v1.13.2 h1:M8181RS6FloyJcayVxqxzMDwuv1+IwpiGbT5u8eWrDo=
 github.com/gethinode/mod-blocks v1.13.2/go.mod h1:jJ9VcUecK16bXza0uGVdOpKeuV+d+qVtjfLKvR4jFA8=
 github.com/gethinode/mod-blocks v1.14.0 h1:OYJymixs7EtE4eeOTFco2pAckWpers2Vk9mVQkhELwQ=
