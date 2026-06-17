@@ -8,6 +8,8 @@ github.com/cloudcannon/bookshop/hugo/v3 v3.18.0 h1:Hy4UrNwvXBC1TiTmsGnYp8T1VLbdK
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.0/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.2 h1:j3XUvvuCv/7SfGKzd7gzb3WEgs1DurqTRDe7gdMAAvU=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.2/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.3 h1:HMhrR7gkQt/cvOfSl64TgaBsD3mLLD/dAFVLLaj2boQ=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.3/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81 h1:HA7C2veNPHg5VXe+Zsub+gDezcsdOJkoT5k/8k44CmI=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81/go.mod h1:Lj9fhJwkg5CeDUf5VpgTF3kMPzwYspo/u5N9uS5FEsY=
 github.com/gethinode/hinode/v2 v2.0.0-beta.82 h1:H10vIDZOvMtf6XGGWZpd40GCW6qzi+L4bgYtxNtcJNg=
