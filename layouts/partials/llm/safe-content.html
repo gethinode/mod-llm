@@ -131,7 +131,10 @@
 {{- /* Collapse runs of 3+ newlines to a single blank line */ -}}
 {{- $content = $content | replaceRE `\n{3,}` "\n\n" -}}
 
-{{- /* Trim leading newlines so the caller controls top-of-content spacing */ -}}
-{{- $content = strings.TrimLeft "\n" $content -}}
+{{- /* Trim surrounding blank lines and end with a single newline: the leading trim lets the
+       caller control top-of-content spacing, while trimming trailing blank lines and adding
+       one final newline avoids stray trailing blanks (MD012) yet keeps a single final
+       newline (MD047). */ -}}
+{{- $content = strings.Trim $content "\n" -}}
 
-{{- return $content -}}
+{{- return (printf "%s\n" $content) -}}
