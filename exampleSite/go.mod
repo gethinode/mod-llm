@@ -18,7 +18,7 @@ require (
 	github.com/gethinode/mod-google-analytics/v2 v2.0.1 // indirect
 	github.com/gethinode/mod-katex v1.1.4 // indirect
 	github.com/gethinode/mod-leaflet/v2 v2.1.0 // indirect
-	github.com/gethinode/mod-llm v1.3.3 // indirect
+	github.com/gethinode/mod-llm v1.3.4 // indirect
 	github.com/gethinode/mod-lottie/v2 v2.1.0 // indirect
 	github.com/gethinode/mod-mermaid/v3 v3.0.1 // indirect
 	github.com/gethinode/mod-mermaid/v4 v4.5.1 // indirect
