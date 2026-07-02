@@ -12,6 +12,8 @@ github.com/cloudcannon/bookshop/hugo/v3 v3.18.3 h1:HMhrR7gkQt/cvOfSl64TgaBsD3mLL
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.3/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.4 h1:mZCALkYdpXKUrw7O1WtLcL5FSFt7nt5HXvs+TczRHf0=
 github.com/cloudcannon/bookshop/hugo/v3 v3.18.4/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.5 h1:AKWzUQpWcBSbJgHQ/5cfPQtGX40bn8vbHBGk4rlHEGE=
+github.com/cloudcannon/bookshop/hugo/v3 v3.18.5/go.mod h1:s7mIonDhtsLcn10ZKuVXyqd6BDHI8vT1WQhZw8rPfY8=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81 h1:HA7C2veNPHg5VXe+Zsub+gDezcsdOJkoT5k/8k44CmI=
 github.com/gethinode/hinode/v2 v2.0.0-beta.81/go.mod h1:Lj9fhJwkg5CeDUf5VpgTF3kMPzwYspo/u5N9uS5FEsY=
 github.com/gethinode/hinode/v2 v2.0.0-beta.82 h1:H10vIDZOvMtf6XGGWZpd40GCW6qzi+L4bgYtxNtcJNg=
