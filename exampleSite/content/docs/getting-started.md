@@ -10,7 +10,7 @@ Add mod-llm to your Hugo module imports:
 
 ```toml
 [[module.imports]]
-  path = "github.com/gethinode/mod-llm"
+  path = "github.com/gethinode/mod-llm/v2"
 ```
 
 ## Configuration

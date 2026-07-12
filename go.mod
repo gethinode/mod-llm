@@ -1,5 +1,5 @@
-module github.com/gethinode/mod-llm
+module github.com/gethinode/mod-llm/v2
 
 go 1.19
 
-require github.com/gethinode/mod-utils/v5 v5.23.4 // indirect
+require github.com/gethinode/mod-utils/v6 v6.0.1 // indirect
