@@ -40,7 +40,7 @@ Hinode is a clean blog theme for [Hugo][hugo], an open-source static site genera
 
 ```toml
 [[module.imports]]
-  path = "github.com/gethinode/mod-llm"
+  path = "github.com/gethinode/mod-llm/v2"
 ```
 
 Hugo generates output for each page based on the configured output formats. `mod-llm` requires two custom formats and supports one optional format. Add the following definitions to your site configuration.
