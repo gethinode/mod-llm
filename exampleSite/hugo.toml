@@ -2,6 +2,11 @@ baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Test site for mod-llm'
 
+# The preview block reference deliberately previews a site that refuses to be framed, to
+# demonstrate the screenshot fallback. Ignore the warning it raises, as Hinode's own
+# example site does.
+ignoreErrors = ["warn-preview-restricted"]
+
 [outputFormats]
   [outputFormats.llmstxt]
     mediaType = "text/plain"
@@ -46,9 +51,9 @@ title = 'Test site for mod-llm'
     source = "i18n"
     target = "i18n"
   [[module.imports]]
-    path = "github.com/gethinode/mod-bootstrap-icons"
+    path = "github.com/gethinode/mod-bootstrap-icons/v2"
   [[module.imports]]
-    path = "github.com/gethinode/mod-blocks"
+    path = "github.com/gethinode/mod-blocks/v2"
   [[module.imports]]
     path = "github.com/gethinode/mod-docs"
   [[module.imports.mounts]]
@@ -69,7 +74,7 @@ title = 'Test site for mod-llm'
   [[module.imports]]
     path = "github.com/gethinode/mod-cookieyes/v2"
   [[module.imports]]
-    path = "github.com/gethinode/hinode/v2"
+    path = "github.com/gethinode/hinode/v3"
 
 [params.modules.fontawesome]
   defaultFamily = "bi"
