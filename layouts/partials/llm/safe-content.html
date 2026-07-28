@@ -103,7 +103,10 @@
 */ -}}
 {{- $sc.Set "codeN" 0 -}}
 {{- $strippable := $content -}}
-{{- range findRE "(?s)```[^`]*```" $strippable -}}
+{{- /* Fences are matched line-anchored so a body may contain inline backticks
+       (e.g. `code` inside a ```markdown skeleton); the old [^`]* body left such
+       fences unprotected and their <placeholders> were stripped as HTML. */ -}}
+{{- range findRE "(?ms)^[ \t]*```+[^\n]*$.*?^[ \t]*```+[ \t]*$" $strippable -}}
   {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
   {{- $sc.SetInMap "codeblocks" $ph . -}}
   {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
