@@ -36,6 +36,8 @@ github.com/gethinode/hinode/v3 v3.12.3 h1:XZ7hlvU8jqoRiIfEWYooLHR8QNs2COh/bB5Gpo
 github.com/gethinode/hinode/v3 v3.12.3/go.mod h1:J8azJZgUIXDxbqSPl8goPtayK2VekiltaBY9PnfHXKM=
 github.com/gethinode/hinode/v3 v3.16.0 h1:uj38dTgu4L8pcBLv9NN8sqBG5hnPLw2RVNauyr0z9/g=
 github.com/gethinode/hinode/v3 v3.16.0/go.mod h1:Lvx12WUDSt0vvG4PjxeDz3pm6McKjnSdZVhEviSBrjs=
+github.com/gethinode/hinode/v3 v3.16.3 h1:Zy2rG8RppxLM7k7hnUC6Do2tWHlrxRCW7Q2QYHJ4EuI=
+github.com/gethinode/hinode/v3 v3.16.3/go.mod h1:PqmewfbVBnwMVs6C4ZAKxjt9pYTAsOz+YF9gznJKHsk=
 github.com/gethinode/mod-blocks/v2 v2.1.2 h1:aufe/mWZ/exoLibOjmqqMNjCpSgeBjGBoCZ3bIXlW7Q=
 github.com/gethinode/mod-blocks/v2 v2.1.2/go.mod h1:41m1Sdht+QRnk0m6PkrQn0IH4NC1MBxP8jsix4gsEpI=
 github.com/gethinode/mod-blocks/v2 v2.1.3 h1:eHesaZMTfAEIOv/oklXPcCbPdLcbSRZOlzwzKG/BiXs=
@@ -70,6 +72,8 @@ github.com/gethinode/mod-csp v1.0.12 h1:6CaIH3IBn92lcwMFdYPmmWsPKq+VZ6n9Po8FI26j
 github.com/gethinode/mod-csp v1.0.12/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
 github.com/gethinode/mod-csp v1.0.13 h1:d1lJTl6/ooPYYQEa/Trn3O4cWx70yV1GYBi9ctGNYrU=
 github.com/gethinode/mod-csp v1.0.13/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
+github.com/gethinode/mod-csp v1.0.14 h1:9lzgaGrLhLoOy1AnQrUrry+HBR5cfGinHEFCj5Xa1Vk=
+github.com/gethinode/mod-csp v1.0.14/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
 github.com/gethinode/mod-docs v1.14.1 h1:+G8IjMi/krhAzvOlB5ODnfQCp6b5ixWyU3D7f/8vdRg=
 github.com/gethinode/mod-docs v1.14.1/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-docs v1.15.1 h1:WSmJWWhbiXeRkNqYRnZMBT5GkMDaJsijYC6YZzMcvkA=
