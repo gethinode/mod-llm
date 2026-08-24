@@ -2,4 +2,4 @@ module github.com/gethinode/mod-llm/v2
 
 go 1.19
 
-require github.com/gethinode/mod-utils/v6 v6.9.0 // indirect
+require github.com/gethinode/mod-utils/v6 v6.11.0 // indirect
