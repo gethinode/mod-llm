@@ -105,12 +105,28 @@
 {{- $strippable := $content -}}
 {{- /* Fences are matched line-anchored so a body may contain inline backticks
        (e.g. `code` inside a ```markdown skeleton); the old [^`]* body left such
-       fences unprotected and their <placeholders> were stripped as HTML. */ -}}
-{{- range findRE "(?ms)^[ \t]*```+[^\n]*$.*?^[ \t]*```+[ \t]*$" $strippable -}}
-  {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
-  {{- $sc.SetInMap "codeblocks" $ph . -}}
-  {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
-  {{- $strippable = replace $strippable . $ph -}}
+       fences unprotected and their <placeholders> were stripped as HTML.
+
+       Fence RUNS are matched longest-first, and a block may only be closed by a
+       run at least as long as the one that opened it — CommonMark's rule. A
+       single ```+ pattern lets a nested ``` close an outer ````, so the tail of
+       the outer block falls outside every protected region and is stripped: a
+       page embedding a ````markdown skeleton that itself contains a ```text
+       example silently loses every line after that inner example. Go's regexp
+       has no backreferences, so the opening run cannot be tied to the closing
+       one in one pattern — hence the descending loop, which protects (and
+       placeholder-replaces) the outer block before the shorter pass can see
+       the inner fence at all. The opening alternative rejects a longer run by
+       requiring a non-backtick after it, so a ```` fence is never matched by
+       the ``` pass. */ -}}
+{{- range $run := seq 10 -1 3 -}}
+  {{- $pattern := printf "(?ms)^[ \t]*`{%d}(?:[^`\n][^\n]*)?$.*?^[ \t]*`{%d,}[ \t]*$" $run $run -}}
+  {{- range findRE $pattern $strippable -}}
+    {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
+    {{- $sc.SetInMap "codeblocks" $ph . -}}
+    {{- $sc.Set "codeN" (add ($sc.Get "codeN") 1) -}}
+    {{- $strippable = replace $strippable . $ph -}}
+  {{- end -}}
 {{- end -}}
 {{- range findRE "`[^`\n]+`" $strippable -}}
   {{- $ph := printf "CODEPH%d_" ($sc.Get "codeN") -}}
