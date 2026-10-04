@@ -92,6 +92,8 @@ github.com/gethinode/hinode/v3 v3.32.1 h1:lwA/Sb+zdvqsPko+TEqnqxnZwGveJlQfHS8Y4L
 github.com/gethinode/hinode/v3 v3.32.1/go.mod h1:3zDEfVtEEYoKMzVnob8Y0ITVhP/ICDbG+pH1WGBELb4=
 github.com/gethinode/hinode/v3 v3.33.0 h1:xAA6ki1fNNq8ZyONwqcXcOuLUYjexHhQbm7YWfNTD24=
 github.com/gethinode/hinode/v3 v3.33.0/go.mod h1:dmaE2EAK9quGGFmGbUDbGBfTbgGHaagCTCfLAgDJo6Y=
+github.com/gethinode/hinode/v3 v3.34.0 h1:PMlrZTcxJ9T2dy4c1r+iREuj6TcMo098hx7HRfa6ye8=
+github.com/gethinode/hinode/v3 v3.34.0/go.mod h1:dmaE2EAK9quGGFmGbUDbGBfTbgGHaagCTCfLAgDJo6Y=
 github.com/gethinode/mod-blocks/v2 v2.1.2 h1:aufe/mWZ/exoLibOjmqqMNjCpSgeBjGBoCZ3bIXlW7Q=
 github.com/gethinode/mod-blocks/v2 v2.1.2/go.mod h1:41m1Sdht+QRnk0m6PkrQn0IH4NC1MBxP8jsix4gsEpI=
 github.com/gethinode/mod-blocks/v2 v2.1.3 h1:eHesaZMTfAEIOv/oklXPcCbPdLcbSRZOlzwzKG/BiXs=
@@ -120,6 +122,8 @@ github.com/gethinode/mod-blocks/v2 v2.6.3 h1:TlYC+JTvuJUXlzjYECxlevMSY69FkDaLWBH
 github.com/gethinode/mod-blocks/v2 v2.6.3/go.mod h1:EBj4ShS27FE0Aqa7Qn6Xdr4mPk3up9yRWCzWqCrIIco=
 github.com/gethinode/mod-blocks/v2 v2.7.0 h1:kTwWrNQpbsbRzvcael2pGz+u04QiFA6itiSKnAJqgBc=
 github.com/gethinode/mod-blocks/v2 v2.7.0/go.mod h1:TCYukwgY32+TkjwMEzBgiUE6Am5EEkkRwkr6Hba3Ydw=
+github.com/gethinode/mod-blocks/v2 v2.8.0 h1:j+Qra7WguV1Mfyth3K5/gtgHhW2L42d7vrHCaSLQOMA=
+github.com/gethinode/mod-blocks/v2 v2.8.0/go.mod h1:HXqiWXYHuY1TiUQdCvWeMst9YQN7nwM/tcHObOvPDOg=
 github.com/gethinode/mod-bootstrap v1.3.7 h1:rbjOg//q7dbsM+TkDQLsyk9LKv93D1RUjtcSkvV55UU=
 github.com/gethinode/mod-bootstrap v1.3.7/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap v1.4.0 h1:tvcpK574YoLtSSN8KkICWVT07Jdust6ppVDj8R6Zuh0=
@@ -218,6 +222,8 @@ github.com/gethinode/mod-llm/v2 v2.0.4 h1:1ygT9IWySd4FKbvSxIHcDNTum49tRaMuJ+hnL7
 github.com/gethinode/mod-llm/v2 v2.0.4/go.mod h1:L4hD4n0EcmWAi4S1g6+5hk2gImPbCEynO5cgDKxoe/g=
 github.com/gethinode/mod-llm/v2 v2.0.5 h1:IrJ6QRFooD+FZTfTGfe1OLQAbWYoQLNo7slTbjRo4yc=
 github.com/gethinode/mod-llm/v2 v2.0.5/go.mod h1:QarTHAl9CixYMNmCcz0N4O9L5mWU0PnsnG4efbjqBEw=
+github.com/gethinode/mod-llm/v2 v2.0.6 h1:dVXV9CVySC9mnoBrKtAAK5dCAG486aeXRZNLxEHx4QY=
+github.com/gethinode/mod-llm/v2 v2.0.6/go.mod h1:XWHa4d7nudM1l+l7fdII+DZ52uISl3dkIWy7TKO7qfQ=
 github.com/gethinode/mod-lottie/v3 v3.0.1 h1:pb/lVgWL1umrFIWcmwkg3Y8eNTaAjMRIDOyP30u/55I=
 github.com/gethinode/mod-lottie/v3 v3.0.1/go.mod h1:7viFyA21NdXSHO2XfYN3e7PGKAThl8faL58F9sxHt20=
 github.com/gethinode/mod-lottie/v3 v3.0.2 h1:PJ9BB5s+oli2D5i9apcWu8AowtfyNVb7VAcZfptobT8=
