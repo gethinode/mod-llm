@@ -12,7 +12,7 @@ require (
 	github.com/gethinode/mod-bootstrap-icons/v2 v2.0.2 // indirect
 	github.com/gethinode/mod-cookieyes/v2 v2.2.6 // indirect
 	github.com/gethinode/mod-csp v1.0.14 // indirect
-	github.com/gethinode/mod-docs v1.16.0 // indirect
+	github.com/gethinode/mod-docs v1.16.1 // indirect
 	github.com/gethinode/mod-flexsearch/v5 v5.4.1 // indirect
 	github.com/gethinode/mod-fontawesome/v6 v6.1.4 // indirect
 	github.com/gethinode/mod-google-analytics/v2 v2.0.4 // indirect
