@@ -5,3 +5,7 @@ allowBuilds:
   # add more only when a postinstall failure is investigated and trusted
 minimumReleaseAgeExclude:
   - "@gethinode/*"
+
+# Remove once hugo-extended adopts the ZIP extraction security fixes.
+overrides:
+  adm-zip: "^0.6.1"
