@@ -104,6 +104,8 @@ github.com/gethinode/hinode/v3 v3.36.2 h1:cTBT0tdcc+xP9lD4IW+CtdaLNI4Lsqvib28EmR
 github.com/gethinode/hinode/v3 v3.36.2/go.mod h1:oZoRg6VhcCcfTYqxr0R39/kT7aIjPAPa5VFYPYr8ba8=
 github.com/gethinode/hinode/v3 v3.40.1 h1:W1+kJRawA+03Y2vbcR6sGNx+00NkZTFxTO9Q/XUKYPI=
 github.com/gethinode/hinode/v3 v3.40.1/go.mod h1:Od/RGLvNbyWS56eJwB5NL/jBkzxN7D62O8/zoKnSSKY=
+github.com/gethinode/hinode/v3 v3.44.1 h1:F6K6/kGZGQI/9bi6mFCZjDzqdJFYdGKPSmHUKKkDzII=
+github.com/gethinode/hinode/v3 v3.44.1/go.mod h1:MLc2m2+xACTyZBzdkL6AFlBL+0wJBRLb9YVBKcR5gLg=
 github.com/gethinode/mod-blocks/v2 v2.1.2 h1:aufe/mWZ/exoLibOjmqqMNjCpSgeBjGBoCZ3bIXlW7Q=
 github.com/gethinode/mod-blocks/v2 v2.1.2/go.mod h1:41m1Sdht+QRnk0m6PkrQn0IH4NC1MBxP8jsix4gsEpI=
 github.com/gethinode/mod-blocks/v2 v2.1.3 h1:eHesaZMTfAEIOv/oklXPcCbPdLcbSRZOlzwzKG/BiXs=
@@ -140,6 +142,8 @@ github.com/gethinode/mod-blocks/v2 v2.11.0 h1:HNAhGngBFkYJjADvpaG14EH3voMY0z2lS/
 github.com/gethinode/mod-blocks/v2 v2.11.0/go.mod h1:HXqiWXYHuY1TiUQdCvWeMst9YQN7nwM/tcHObOvPDOg=
 github.com/gethinode/mod-blocks/v2 v2.11.2 h1:o7xpJAckIdrTRplKD+jxIQiHkhP4tzXz1LYt6cXj3dE=
 github.com/gethinode/mod-blocks/v2 v2.11.2/go.mod h1:HXqiWXYHuY1TiUQdCvWeMst9YQN7nwM/tcHObOvPDOg=
+github.com/gethinode/mod-blocks/v2 v2.12.2 h1:bVb1PfWC5nDdynPNk7gr9ufS5rCDyHmsHW4p01C2n3U=
+github.com/gethinode/mod-blocks/v2 v2.12.2/go.mod h1:/tW/zbWxWOcVpBxO3ATj87J2gyCKgDyXy3LC/o9sdI4=
 github.com/gethinode/mod-bootstrap v1.3.7 h1:rbjOg//q7dbsM+TkDQLsyk9LKv93D1RUjtcSkvV55UU=
 github.com/gethinode/mod-bootstrap v1.3.7/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap v1.4.0 h1:tvcpK574YoLtSSN8KkICWVT07Jdust6ppVDj8R6Zuh0=
@@ -164,6 +168,10 @@ github.com/gethinode/mod-csp v1.0.13 h1:d1lJTl6/ooPYYQEa/Trn3O4cWx70yV1GYBi9ctGN
 github.com/gethinode/mod-csp v1.0.13/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
 github.com/gethinode/mod-csp v1.0.14 h1:9lzgaGrLhLoOy1AnQrUrry+HBR5cfGinHEFCj5Xa1Vk=
 github.com/gethinode/mod-csp v1.0.14/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
+github.com/gethinode/mod-csp v1.0.15 h1:b+qVaGGNw9oii11FycoAyqSRf4/gGQzL3ovEibm/fNc=
+github.com/gethinode/mod-csp v1.0.15/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
+github.com/gethinode/mod-csp v1.0.16 h1:/J95n3fVpHM4j5ND9jT7iC+fNv07RvSNLoiIgJHuP30=
+github.com/gethinode/mod-csp v1.0.16/go.mod h1:Nb22QMicoUHgZQUKP5TCgVrSI8K3KU7jLuLBShmotjg=
 github.com/gethinode/mod-docs v1.14.1 h1:+G8IjMi/krhAzvOlB5ODnfQCp6b5ixWyU3D7f/8vdRg=
 github.com/gethinode/mod-docs v1.14.1/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-docs v1.15.1 h1:WSmJWWhbiXeRkNqYRnZMBT5GkMDaJsijYC6YZzMcvkA=
@@ -186,6 +194,8 @@ github.com/gethinode/mod-docs v1.16.0 h1:k2tP00TXzsSeioGb2Zk4RXS+ltwXsp2FfytYGjS
 github.com/gethinode/mod-docs v1.16.0/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-docs v1.16.1 h1:mO2R15TE4AvQ435QdB1XnN5LogqxrwDafZ9NUh9SpVQ=
 github.com/gethinode/mod-docs v1.16.1/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
+github.com/gethinode/mod-docs v1.16.4 h1:JAHopLbSYuPnxOcNjc7Qr0BV14PS5BpUSqdtow6dvoo=
+github.com/gethinode/mod-docs v1.16.4/go.mod h1:ru1w0fHqFocjDIMV0dm40OwhBw5k4UncCS8iO/1S5kI=
 github.com/gethinode/mod-flexsearch/v5 v5.0.1 h1:/0K2nlJ53+PyQjyyl14S9SGpmJRV/vy5V4I71KbL6Qc=
 github.com/gethinode/mod-flexsearch/v5 v5.0.1/go.mod h1:RKNSsvoFRnEfQftB/o9IrX4YBLeS27HH9AgnpYYSd24=
 github.com/gethinode/mod-flexsearch/v5 v5.0.2 h1:VAHzYLJECrVBvzn5xvM+FoHSP2VwDDPlUrfJDL8G/gg=
@@ -224,6 +234,10 @@ github.com/gethinode/mod-google-analytics/v2 v2.0.3 h1:G2uwsOmgpjNA0Zcftvzlz++qX
 github.com/gethinode/mod-google-analytics/v2 v2.0.3/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
 github.com/gethinode/mod-google-analytics/v2 v2.0.4 h1:ONEUjhfVR6p+Y/XyU3BUGXZy4+HAkJvGo+mr24ugklY=
 github.com/gethinode/mod-google-analytics/v2 v2.0.4/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
+github.com/gethinode/mod-google-analytics/v2 v2.0.5 h1:J9c0HuOnCEdDpJobe+FOegBI/7M4NQsubxHikuGX3P4=
+github.com/gethinode/mod-google-analytics/v2 v2.0.5/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
+github.com/gethinode/mod-google-analytics/v2 v2.0.6 h1:BhUn4NlNkZV6eo2GCgQa+Ws8bvyNT35NTPeB+7p51wo=
+github.com/gethinode/mod-google-analytics/v2 v2.0.6/go.mod h1:y4ZlacA8FSXjmvn9P8cZshOrBB5Wc+3p0DKSehkk+8E=
 github.com/gethinode/mod-katex v1.1.5 h1:Fp0BGdf3m9xWOQHx1hILi78gpNHRwdTpruQpLHpTCFw=
 github.com/gethinode/mod-katex v1.1.5/go.mod h1:byAfpI3wuqNJIooTGVEGc1cjBhhCy4+CcK1H6495MYg=
 github.com/gethinode/mod-katex v1.1.6 h1:mow61stEySb5mH5tUp1l69l2FrLWl+jh46JVT5lMOSA=
@@ -252,6 +266,8 @@ github.com/gethinode/mod-llm/v2 v2.0.5 h1:IrJ6QRFooD+FZTfTGfe1OLQAbWYoQLNo7slTbj
 github.com/gethinode/mod-llm/v2 v2.0.5/go.mod h1:QarTHAl9CixYMNmCcz0N4O9L5mWU0PnsnG4efbjqBEw=
 github.com/gethinode/mod-llm/v2 v2.0.6 h1:dVXV9CVySC9mnoBrKtAAK5dCAG486aeXRZNLxEHx4QY=
 github.com/gethinode/mod-llm/v2 v2.0.6/go.mod h1:XWHa4d7nudM1l+l7fdII+DZ52uISl3dkIWy7TKO7qfQ=
+github.com/gethinode/mod-llm/v2 v2.0.7 h1:LnSReoWr1RgjxE2BoYEFPZ7sG+RDLEx/zqk6LmJPswE=
+github.com/gethinode/mod-llm/v2 v2.0.7/go.mod h1:XWHa4d7nudM1l+l7fdII+DZ52uISl3dkIWy7TKO7qfQ=
 github.com/gethinode/mod-lottie/v3 v3.0.1 h1:pb/lVgWL1umrFIWcmwkg3Y8eNTaAjMRIDOyP30u/55I=
 github.com/gethinode/mod-lottie/v3 v3.0.1/go.mod h1:7viFyA21NdXSHO2XfYN3e7PGKAThl8faL58F9sxHt20=
 github.com/gethinode/mod-lottie/v3 v3.0.2 h1:PJ9BB5s+oli2D5i9apcWu8AowtfyNVb7VAcZfptobT8=
@@ -294,6 +310,10 @@ github.com/gethinode/mod-simple-datatables/v4 v4.4.1 h1:n79RYqb2Gw/EXQJANQrX6G3V
 github.com/gethinode/mod-simple-datatables/v4 v4.4.1/go.mod h1:xH4IjmJSTACase/LdxqSiRSWyp0oLMbssdbKT8cBnOQ=
 github.com/gethinode/mod-simple-datatables/v4 v4.4.2 h1:v0FXe/U3aCknBZfhhOzjw4w6wb7GYEldrmeHjwCFn2w=
 github.com/gethinode/mod-simple-datatables/v4 v4.4.2/go.mod h1:xH4IjmJSTACase/LdxqSiRSWyp0oLMbssdbKT8cBnOQ=
+github.com/gethinode/mod-simple-datatables/v4 v4.4.3 h1:uaAzhTYpnrxW5zCW+Tv+JwOeeLFvBBZvyqF5YSkkfV4=
+github.com/gethinode/mod-simple-datatables/v4 v4.4.3/go.mod h1:W8sAf+vqvl7gUt5/d5uAald/+kWK4f8ru54EbbdOnVQ=
+github.com/gethinode/mod-simple-datatables/v4 v4.4.4 h1:gTk9FIFgaZho5wDLyKNtfz1ERyH6DG0DO7VhMwQWASU=
+github.com/gethinode/mod-simple-datatables/v4 v4.4.4/go.mod h1:81JsU0Gr7eGrGczZ7dFnnkJG4rLS+JH+v8guUQLHYfM=
 github.com/gethinode/mod-utils/v6 v6.4.1 h1:jHiJEwSjLp6tqIXayxUQTxILwnM7hWMgYyTYhxFE3ZA=
 github.com/gethinode/mod-utils/v6 v6.4.1/go.mod h1:E5tO9w3VKaidJpu1nI8zAKmh0bddFHOIIQnudAaXQTs=
 github.com/gethinode/mod-utils/v6 v6.5.0 h1:NdeITAfjt2ah9OHt0Nuu6F+STlC0bO9oHaFl8Agi2rk=
