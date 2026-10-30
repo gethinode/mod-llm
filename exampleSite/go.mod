@@ -7,12 +7,12 @@ require (
 	github.com/airbnb/lottie-web v5.13.0+incompatible // indirect
 	github.com/cloudcannon/bookshop/hugo/v3 v3.20.0 // indirect
 	github.com/gethinode/hinode/v3 v3.46.1 // indirect
-	github.com/gethinode/mod-blocks/v2 v2.12.2 // indirect
+	github.com/gethinode/mod-blocks/v2 v2.13.2 // indirect
 	github.com/gethinode/mod-bootstrap v1.5.1 // indirect
 	github.com/gethinode/mod-bootstrap-icons/v2 v2.0.3 // indirect
 	github.com/gethinode/mod-cookieyes/v2 v2.2.6 // indirect
 	github.com/gethinode/mod-csp v1.0.16 // indirect
-	github.com/gethinode/mod-docs v1.16.4 // indirect
+	github.com/gethinode/mod-docs v1.16.5 // indirect
 	github.com/gethinode/mod-flexsearch/v5 v5.4.1 // indirect
 	github.com/gethinode/mod-fontawesome/v6 v6.1.5 // indirect
 	github.com/gethinode/mod-google-analytics/v2 v2.0.6 // indirect
