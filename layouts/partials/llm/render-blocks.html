@@ -16,7 +16,14 @@
     {{- $processed := partial "llm/safe-content.html" (dict "Page" $page "Content" (printf "%s" (partial $partial .))) -}}
     {{- $body = printf "%s%s\n\n" $body $processed -}}
   {{- end -}}
-  {{- if strings.TrimSpace $body -}}
+  {{- /* A cards or panels block without a heading is only a layout of its items, and its
+         fallback title names the layout. Print no section and raise the items one level. */ -}}
+  {{- $authored := false -}}
+  {{- with .heading }}{{- $authored = or .title .preheading .content -}}{{- end -}}
+  {{- $headless := and (in (slice "cards" "panels") $name) (not $authored) -}}
+  {{- if and $headless (findRE `(?m)^### ` $body 1) -}}
+    {{- $out = printf "%s\n%s" $out ($body | replaceRE `(?m)^#(#{2,5} )` "$1") -}}
+  {{- else if strings.TrimSpace $body -}}
     {{- $out = printf "%s\n## %s\n\n%s" $out $title $body -}}
   {{- end -}}
 {{- end -}}
