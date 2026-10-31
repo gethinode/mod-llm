@@ -13,7 +13,8 @@
   {{- end }}{{- end -}}
   {{- $partial := printf "bookshop/components/%s/%s.hugo.md" $name $name -}}
   {{- if templates.Exists (printf "partials/%s" $partial) -}}
-    {{- $body = printf "%s%s\n\n" $body (printf "%s" (partial $partial .)) -}}
+    {{- $processed := partial "llm/safe-content.html" (dict "Page" $page "Content" (printf "%s" (partial $partial .))) -}}
+    {{- $body = printf "%s%s\n\n" $body $processed -}}
   {{- end -}}
   {{- if strings.TrimSpace $body -}}
     {{- $out = printf "%s\n## %s\n\n%s" $out $title $body -}}
