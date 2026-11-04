@@ -1,4 +1,21 @@
-{{- $defaultLang := (index (sort site.Languages "Weight") 0).Lang -}}
+{{- /* This template treats the lowest-weight language as the default, which can differ from
+  defaultContentLanguage. Hugo v0.156.0 deprecated
+  site.Languages, so from that release on the languages are collected from hugo.Sites. It holds
+  one site per language, version and role: only the sites in the version and role of the first
+  site are kept, so each language is listed once, in the order site.Languages uses. The guard
+  keeps site.Languages for older Hugo. Use if/else, not cond: cond evaluates both arguments. */ -}}
+{{- $languages := slice -}}
+{{- if le (hugo.Version.Compare "0.156.0") 0 -}}
+  {{- $first := index hugo.Sites 0 -}}
+  {{- range hugo.Sites -}}
+    {{- if and (eq .Version.Name $first.Version.Name) (eq .Role.Name $first.Role.Name) -}}
+      {{- $languages = $languages | append .Language -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $languages = site.Languages -}}
+{{- end -}}
+{{- $defaultLang := (index (sort $languages "Weight") 0).Lang -}}
 {{- if eq .Language.Lang $defaultLang -}}
 {{- $site := site -}}
 # {{ $site.Title }}

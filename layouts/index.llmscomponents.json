@@ -1,5 +1,8 @@
-{{- $globalArgs := ((index site.Data.structures "_arguments") | default dict).arguments | default dict -}}
-{{- $types := (index site.Data.structures "_types" | default dict).types | default dict -}}
+{{- /* Hugo v0.156.0 deprecated site.Data: GetData returns hugo.Data from that release on and
+  site.Data on older Hugo. */ -}}
+{{- $data := partial "utilities/GetData.html" . -}}
+{{- $globalArgs := ((index $data.structures "_arguments") | default dict).arguments | default dict -}}
+{{- $types := (index $data.structures "_types" | default dict).types | default dict -}}
 
 {{- /* Parse hinode version from go.mod */ -}}
 {{- $hinodeVersion := "" -}}
@@ -45,7 +48,7 @@
 
 {{- /* Pre-build blueprint names to suppress mod-blocks internal helpers in flat loop */ -}}
 {{- $blueprintNames := dict -}}
-{{- range $modKey, $modVal := site.Data.structures -}}
+{{- range $modKey, $modVal := $data.structures -}}
   {{- if or (hasPrefix $modKey "_") (not (reflect.IsMap $modVal)) }}{{ continue }}{{ end -}}
   {{- if $modVal.arguments }}{{ continue }}{{ end -}}
   {{- if eq $modKey "components" }}{{ continue }}{{ end -}}
@@ -57,7 +60,7 @@
 {{- $components := slice -}}
 
 {{- /* Loop 1: flat structure files → hinode shortcodes */ -}}
-{{- range $name, $def := site.Data.structures -}}
+{{- range $name, $def := $data.structures -}}
   {{- if hasPrefix $name "_" }}{{ continue }}{{ end -}}
   {{- if eq $name "components" }}{{ continue }}{{ end -}}
   {{- if not $def.arguments }}{{ continue }}{{ end -}}
@@ -141,7 +144,7 @@
 {{- end -}}
 
 {{- /* Loop 2: module-namespaced blueprints (e.g. mod-blocks) → content blocks */ -}}
-{{- range $modKey, $modVal := site.Data.structures -}}
+{{- range $modKey, $modVal := $data.structures -}}
   {{- if or (hasPrefix $modKey "_") (not (reflect.IsMap $modVal)) }}{{ continue }}{{ end -}}
   {{- if $modVal.arguments }}{{ continue }}{{ end -}}
   {{- if eq $modKey "components" }}{{ continue }}{{ end -}}
