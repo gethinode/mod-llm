@@ -120,6 +120,8 @@ github.com/gethinode/hinode/v3 v3.51.0 h1:nnlowUAmkiwFswrz+WZW5HbDxo/6R6RjQKJBns
 github.com/gethinode/hinode/v3 v3.51.0/go.mod h1:JpShXNkZMn8eItAaT2SNpcBjhdAN0STY6+oCDTZVYX4=
 github.com/gethinode/hinode/v3 v3.52.3 h1:bT6DCY5t09OVMfW+tp5U7zPQrMA1ixWFH2r9koz/Pm4=
 github.com/gethinode/hinode/v3 v3.52.3/go.mod h1:6j2tKUMxHHx0W+zDDRlLW+7xgKCZ+CvpioCJZctSW/I=
+github.com/gethinode/hinode/v3 v3.53.0 h1:LftGUrcclLTg1s8lgeUNhyPTENzJ9uEagu0b5bmZNLU=
+github.com/gethinode/hinode/v3 v3.53.0/go.mod h1:oLrUrSpPY2RqNsO/+ujCsYkkhe5PNMWQXXHpBjbIERw=
 github.com/gethinode/mod-blocks/v2 v2.1.2 h1:aufe/mWZ/exoLibOjmqqMNjCpSgeBjGBoCZ3bIXlW7Q=
 github.com/gethinode/mod-blocks/v2 v2.1.2/go.mod h1:41m1Sdht+QRnk0m6PkrQn0IH4NC1MBxP8jsix4gsEpI=
 github.com/gethinode/mod-blocks/v2 v2.1.3 h1:eHesaZMTfAEIOv/oklXPcCbPdLcbSRZOlzwzKG/BiXs=
