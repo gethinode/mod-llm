@@ -23,3 +23,30 @@ An example keeps the escaped shortcode as literal text.
 {{< /example >}}
 
 An escaped shortcode outside any shortcode is literal text: `{{</* abbr HTML */>}}`.
+
+A shortcode inside a list item is indented to the item as a whole.
+
+1. **Install**
+
+    {{< command shell="bash" >}}
+    brew install example
+    example --version
+    {{< /command >}}
+
+2. **Verify**
+
+    Run the check.
+
+A nav-item that indents its tag but not its body keeps the body as written.
+
+{{< nav tab-type="tabs" >}}
+  {{< nav-item title="Steps" show="true" >}}
+
+1. **Install**
+
+    {{</* command shell="bash" */>}}
+    brew install example
+    example --version
+    {{</* /command */>}}
+  {{< /nav-item >}}
+{{< /nav >}}

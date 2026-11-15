@@ -1,0 +1,34 @@
+{{- /*
+  Replaces the first occurrence of one shortcode matched by llm/safe-content.html with its
+  rendered output and returns the content. Arguments: Page, Content, Match (the shortcode
+  text), Escaped and Literals (passed on to llm/render-shortcode.html).
+
+  A shortcode that starts a line, say inside a list item, is rendered as if it started the
+  line at column 0, and its output is indented back to its column as a whole, so that a
+  fenced block stays in the list item. Rendered on its own, the shortcode cannot deindent
+  its body itself: .InnerDeindent removes the indentation of its opening tag, which is none.
+  Blank lines get no trailing whitespace. A body with a line indented less than the opening
+  tag is left as written, as the HTML renders it: deindenting only some of its lines would
+  move them relative to the others.
+*/ -}}
+{{- $content := .Content -}}
+{{- $match := .Match -}}
+{{- $indent := index (last 1 (split (index (split $content $match) 0) "\n")) 0 -}}
+{{- if findRE `\S` $indent }}{{ $indent = "" }}{{ end -}}
+{{- range after 1 (split $match "\n") -}}
+  {{- if and (findRE `\S` .) (not (hasPrefix . $indent)) }}{{ $indent = "" }}{{ end -}}
+{{- end -}}
+{{- $source := $match -}}
+{{- if $indent }}{{ $source = replace $source (printf "\n%s" $indent) "\n" }}{{ end -}}
+
+{{- $rendered := partial "llm/render-shortcode.html" (dict "Page" .Page "Match" $source "Escaped" .Escaped "Literals" .Literals) -}}
+{{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
+{{- /* RenderString ends the paragraph it returns with a newline, which the unwrapping keeps;
+       for a shortcode used inside a line, that breaks the line after its value, splitting
+       **bold** spans and table rows. Trim it when the output is a single line. Multi-line
+       output is block content whose trailing newline separates it from what follows. */ -}}
+{{- if not (strings.Contains (strings.TrimRight "\n" $rendered) "\n") }}{{ $rendered = strings.TrimRight "\n" $rendered }}{{ end -}}
+{{- if $indent -}}
+  {{- $rendered = replace $rendered "\n" (printf "\n%s" $indent) | replaceRE `(?m)^[ \t]+$` "" -}}
+{{- end -}}
+{{- return replace $content $match $rendered 1 -}}
