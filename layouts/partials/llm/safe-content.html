@@ -22,12 +22,9 @@
 {{- end -}}
 
 {{- /*
-  Steps 2-4 render each shortcode with RenderString and unwrap the paragraph it
-  returns. RenderString ends that paragraph with a newline, which the unwrapping
-  keeps; for a shortcode used inside a line, that breaks the line after its value,
-  splitting **bold** spans and table rows. Trim it when the output is a single
-  line. Multi-line output is block content whose trailing newline separates it
-  from what follows (e.g. a nav-item before the next one), so it stays.
+  Steps 2-4 replace each shortcode with its rendered output through
+  llm/replace-shortcode.html, which unwraps the paragraph RenderString returns and
+  indents the output to the column the shortcode starts at.
 */ -}}
 {{- /*
   Step 2 – Pass A: Explicitly self-closing shortcodes.
@@ -36,10 +33,7 @@
 {{- $selfClosingPattern := `\{\{[<%]\s*[\w-]+[^>]*/\s*[>%]\}\}` -}}
 {{- range findRE $selfClosingPattern $content -}}
   {{- $match := . -}}
-  {{- $rendered := partial "llm/render-shortcode.html" (dict "Page" $page "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
-  {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
-  {{- if not (strings.Contains (strings.TrimRight "\n" $rendered) "\n") }}{{ $rendered = strings.TrimRight "\n" $rendered }}{{ end -}}
-  {{- $content = replace $content $match $rendered -}}
+  {{- $content = partial "llm/replace-shortcode.html" (dict "Page" $page "Content" $content "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
 {{- end -}}
 
 {{- /*
@@ -59,10 +53,7 @@
     {{- $openName := replaceRE `(?s)^\{\{[<%]\s*([\w-]+).*$` "$1" $match -}}
     {{- $closeName := replaceRE `(?s)^.*\{\{[<%]\s*/\s*([\w-]+)\s*[>%]\}\}$` "$1" $match -}}
     {{- if eq $openName $closeName -}}
-      {{- $rendered := partial "llm/render-shortcode.html" (dict "Page" $page "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
-      {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
-      {{- if not (strings.Contains (strings.TrimRight "\n" $rendered) "\n") }}{{ $rendered = strings.TrimRight "\n" $rendered }}{{ end -}}
-      {{- $content = replace $content $match $rendered -}}
+      {{- $content = partial "llm/replace-shortcode.html" (dict "Page" $page "Content" $content "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
@@ -89,10 +80,7 @@
       {{- $content = replace $content $match "" -}}
     {{- else -}}
       {{- /* No matching closing tag — treat as implicit self-closing */ -}}
-      {{- $rendered := partial "llm/render-shortcode.html" (dict "Page" $page "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
-      {{- $rendered = $rendered | replaceRE `</p>\s*<p>` "\n\n" | replaceRE `<br/?>` "\n" | replaceRE `</?p>` "" -}}
-      {{- if not (strings.Contains (strings.TrimRight "\n" $rendered) "\n") }}{{ $rendered = strings.TrimRight "\n" $rendered }}{{ end -}}
-      {{- $content = replace $content $match $rendered -}}
+      {{- $content = partial "llm/replace-shortcode.html" (dict "Page" $page "Content" $content "Match" $match "Escaped" ($sc.Get "escaped") "Literals" ($sc.Get "placeholders")) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
