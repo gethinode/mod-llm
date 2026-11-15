@@ -1,0 +1,24 @@
+{{- /*
+  Renders one shortcode matched by llm/safe-content.html. Arguments: Page, Match (the
+  shortcode text), Escaped (the map of placeholders to the escaped shortcodes they replaced)
+  and Literals (the map of placeholders to the literal form of those shortcodes).
+
+  The escaped shortcodes inside the match are put back before it is rendered, so the
+  shortcode that encloses them receives them as Hugo hands them over: a nav-item renders a
+  nested command, an example prints it as literal text. Any literal that reaches the output
+  is replaced by its placeholder again, so that the later passes of llm/safe-content.html do
+  not render it as a shortcode.
+*/ -}}
+{{- $match := .Match -}}
+{{- $restored := slice -}}
+{{- range $ph, $escaped := .Escaped -}}
+  {{- if strings.Contains $match $ph -}}
+    {{- $match = replace $match $ph $escaped -}}
+    {{- $restored = $restored | append $ph -}}
+  {{- end -}}
+{{- end -}}
+{{- $rendered := .Page.RenderString $match | string -}}
+{{- range $restored -}}
+  {{- $rendered = replace $rendered (index $.Literals .) . -}}
+{{- end -}}
+{{- return $rendered -}}
