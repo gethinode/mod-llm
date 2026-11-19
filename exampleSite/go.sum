@@ -180,6 +180,8 @@ github.com/gethinode/mod-blocks/v2 v2.15.2 h1:+2X2pji5JlqKWXNWwQghB1eOQZWITNoq/j
 github.com/gethinode/mod-blocks/v2 v2.15.2/go.mod h1:/XJFsSBM87ROZnfVGUFKgyjM5bfTXXQ7k8Rhx0GKuhU=
 github.com/gethinode/mod-blocks/v2 v2.16.0 h1:UjF8PwIHj417fyA6Dixd+IY3MN1unwbmPmOIqOGOFJ4=
 github.com/gethinode/mod-blocks/v2 v2.16.0/go.mod h1:6nGOY6eL0GqQwDNlQL9jOW/kgtsKn4rViEIbtcu1+Q0=
+github.com/gethinode/mod-blocks/v2 v2.17.0 h1:uXhnIBdAML6tOgs3BlnybDu2PuQUtarHMBgPaZxNoRk=
+github.com/gethinode/mod-blocks/v2 v2.17.0/go.mod h1:8YUfKFM9IHCtQyNm1vMU7xyHIClf+Ah+5+acyV47Uog=
 github.com/gethinode/mod-bootstrap v1.3.7 h1:rbjOg//q7dbsM+TkDQLsyk9LKv93D1RUjtcSkvV55UU=
 github.com/gethinode/mod-bootstrap v1.3.7/go.mod h1:CxrYCFzKtBMz3YWG5i/d5jHKCgvUo60NFcCmz2mxCjQ=
 github.com/gethinode/mod-bootstrap v1.4.0 h1:tvcpK574YoLtSSN8KkICWVT07Jdust6ppVDj8R6Zuh0=

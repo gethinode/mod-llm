@@ -7,7 +7,7 @@ require (
 	github.com/airbnb/lottie-web v5.13.0+incompatible // indirect
 	github.com/cloudcannon/bookshop/hugo/v3 v3.20.0 // indirect
 	github.com/gethinode/hinode/v3 v3.54.0 // indirect
-	github.com/gethinode/mod-blocks/v2 v2.16.0 // indirect
+	github.com/gethinode/mod-blocks/v2 v2.17.0 // indirect
 	github.com/gethinode/mod-bootstrap v1.5.1 // indirect
 	github.com/gethinode/mod-bootstrap-icons/v2 v2.0.3 // indirect
 	github.com/gethinode/mod-cookieyes/v2 v2.2.6 // indirect
