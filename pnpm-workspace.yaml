@@ -9,3 +9,7 @@ minimumReleaseAgeExclude:
 # Remove once hugo-extended adopts the ZIP extraction security fixes.
 overrides:
   adm-zip: "^0.6.1"
+
+# Select standard Hugo archives from 0.170.0 and Extended archives for older Hugo.
+patchedDependencies:
+  hugo-extended@0.170.0: patches/hugo-extended@0.170.0.patch
